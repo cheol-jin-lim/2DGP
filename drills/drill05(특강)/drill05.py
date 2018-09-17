@@ -84,7 +84,7 @@ def make_circle():
 
 
 while True:
-    # make_rectangle()
+    make_rectangle()
     make_circle()
 
 
