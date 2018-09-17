@@ -17,8 +17,9 @@ pass
 
 def two_position():
     x, y = 203, 535
+    frame = 0
     while x > 132 and y > 243:
-        frame = 0
+
         clear_canvas()
         grass.draw(400,30)
         character.clip_draw(frame*100,0,100,100,x,y)
@@ -33,8 +34,9 @@ def two_position():
     pass
 def three_position():
     x,y = 132,243
+    frame = 0
     while x < 535 and y < 470:
-        frame = 0
+
         clear_canvas()
         grass.draw(400, 30)
         character.clip_draw(frame * 100, 100, 100, 100, x, y)
@@ -45,10 +47,24 @@ def three_position():
         y = y + 5
         delay(0.05)
         get_events()
-        frame = frame + 1
+
 
     pass
 def four_position():
+    x,y = 535,470
+    frame = 0
+    while x > 477 and y > 203:
+
+        clear_canvas()
+        grass.draw(400, 30)
+        character.clip_draw(frame * 100, 0, 100, 100, x, y)
+
+        update_canvas()
+        frame = (frame % 8) + 1
+        x = x - 2
+        y = y - 8
+        delay(0.05)
+        get_events()
     pass
 def five_position():
     pass
@@ -65,9 +81,9 @@ def ten_position():
 
 
 while True:
-    one_position()
-    two_position()
-    three_position()
+    #one_position()
+    #two_position()
+    #three_position()
     four_position()
     five_position()
     six_position()
