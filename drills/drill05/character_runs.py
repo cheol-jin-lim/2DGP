@@ -28,7 +28,6 @@ def two_position():
         frame = (frame + 1) % 8
         x = x - 2
         y = y - 10 # x축이 이동하는 거리보다 y축이 이동하는 거리를 크게해줌.
-        delay(0.05)
         get_events()
 
     pass
@@ -45,7 +44,6 @@ def three_position():
         frame = (frame % 8) + 1
         x = x + 10
         y = y + 5
-        delay(0.05)
         get_events()
 
 
@@ -63,7 +61,6 @@ def four_position():
         frame = (frame % 8) + 1
         x = x - 2
         y = y - 8
-        delay(0.05)
         get_events()
     pass
 def five_position():
@@ -79,7 +76,6 @@ def five_position():
         frame = (frame % 8) + 1
         x = x + 8
         y = y - 2
-        delay(0.05)
         get_events()
     pass
 def six_position():
@@ -95,7 +91,6 @@ def six_position():
         frame = (frame % 8) + 1
         x = x - 15
         y = y + 3
-        delay(0.05)
         get_events()
     pass
 def seven_position():
@@ -111,7 +106,6 @@ def seven_position():
         frame = (frame % 8) + 1
         x = x + 10
         y = y - 10
-        delay(0.05)
         get_events()
     pass
 def eight_position():
@@ -127,7 +121,6 @@ def eight_position():
         frame = (frame % 8) + 1
         x = x + 5
         y = y + 10
-        delay(0.05)
         get_events()
     pass
 def nine_position():
@@ -143,7 +136,6 @@ def nine_position():
         frame = (frame % 8) + 1
         x = x - 1
         y = y - 20
-        delay(0.05)
         get_events()
     pass
 def ten_position():
@@ -159,21 +151,20 @@ def ten_position():
         frame = (frame % 8) + 1
         x = x + 9
         y = y + 3
-        delay(0.05)
         get_events()
     pass
 
 
 while True:
-    #one_position()
-    #two_position()
-    #three_position()
-    #four_position()
-    #five_position()
-    #six_position()
-    #seven_position()
-    #eight_position()
-    #nine_position()
+    one_position()
+    two_position()
+    three_position()
+    four_position()
+    five_position()
+    six_position()
+    seven_position()
+    eight_position()
+    nine_position()
     ten_position()
 
 
