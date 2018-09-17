@@ -131,6 +131,20 @@ def eight_position():
         get_events()
     pass
 def nine_position():
+    x,y = 692,518
+    frame = 0
+    while x > 682 and y > 336:
+
+        clear_canvas()
+        grass.draw(400, 30)
+        character.clip_draw(frame * 100, 0, 100, 100, x, y)
+
+        update_canvas()
+        frame = (frame % 8) + 1
+        x = x - 1
+        y = y - 15
+        delay(0.05)
+        get_events()
     pass
 def ten_position():
     pass
@@ -144,7 +158,7 @@ while True:
     #five_position()
     #six_position()
     #seven_position()
-    eight_position()
+    #eight_position()
     nine_position()
     ten_position()
 
