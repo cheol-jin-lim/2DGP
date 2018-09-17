@@ -2,7 +2,7 @@ from pico2d import *
 open_canvas(800,600)
 grass = load_image('grass.png')
 character = load_image('animation_sheet.png')
-frame = 0
+
 
 
 
@@ -10,7 +10,7 @@ def one_position():
     x,y = 203,535
     clear_canvas()
     grass.draw(400, 30)
-    character.clip_draw(frame,200,100,100,x,y)
+    character.clip_draw(0,200,100,100,x,y)
     update_canvas()
     get_events()
 pass
@@ -32,6 +32,21 @@ def two_position():
 
     pass
 def three_position():
+    x,y = 132,243
+    while x < 535 and y < 470:
+        frame = 0
+        clear_canvas()
+        grass.draw(400, 30)
+        character.clip_draw(frame * 100, 100, 100, 100, x, y)
+
+        update_canvas()
+        frame = (frame % 8) + 1
+        x = x + 10
+        y = y + 5
+        delay(0.05)
+        get_events()
+        frame = frame + 1
+
     pass
 def four_position():
     pass
@@ -49,7 +64,7 @@ def ten_position():
     pass
 
 
-# while True:
+while True:
     one_position()
     two_position()
     three_position()
