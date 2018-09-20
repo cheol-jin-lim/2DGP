@@ -33,28 +33,41 @@ click_x,click_y = 0, 0
 frame = 0
 hide_cursor()
 my_x, my_y = 500, 500
-
+t = 0
 
 def move():
+
     pass
 def moveright():
+    global my_x
+    my_x = my_x+1
     pass
 def moveleft():
+    global my_x
+    my_x = my_x-1
     pass
 def moveup():
+    global my_y
+    my_y = my_y + 1
     pass
 def movedown():
+    global my_y
+    my_y = my_y - 1
     pass
 
 while running:
     clear_canvas()
     kpu_ground.draw(KPU_WIDTH // 2, KPU_HEIGHT // 2)
-    character.clip_draw(frame * 100, 100 * 1, 100, 100, my_x, my_y)
+    if(t == 1):
+        character.clip_draw(frame * 100, 0, 100, 100, my_x, my_y)
+    elif(t==2):
+        character.clip_draw(frame * 100, 100 * 1, 100, 100, my_x, my_y)
     mouse.draw(mouse_x,mouse_y)
     update_canvas()
     frame = (frame + 1) % 8
+    #move()
 
-    delay(0.02)
+
     handle_events()
 
 close_canvas()
