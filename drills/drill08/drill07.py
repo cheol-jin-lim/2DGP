@@ -12,17 +12,17 @@ running = True
 
 hide_cursor()
 size = 20
-points = [(random.randint(0,1280), random.randint(0,1024))for i in range(size)]
+points = [(random.randint(0,1280-50), random.randint(0,1024-50))for i in range(size)]
 n = 1
 frame = 0
 
-def draw_line(p1, p2):
+def draw_line(p1, p2,p3,p4):
         dir = p2[0]-p1[0]
-        for i in range(0,100+1,20):
+        for i in range(0,50+1,20):
             t = i / 100
 
-            x = (1-t)*p1[0]+t*p2[0]
-            y= (1-t)*p1[1]+t*p2[1]
+            x =(2*t**2-3*t+1)*p1[0]+(-4*t**2+4*t)*p2[0]+(2*t**2-t)*p3[0]
+            y= (2*t**2-3*t+1)*p1[1]+(-4*t**2+4*t)*p2[1]+(2*t**2-t)*p3[1]
             global frame
             clear_canvas()
             kpu_ground.draw(KPU_WIDTH // 2, KPU_HEIGHT // 2)
