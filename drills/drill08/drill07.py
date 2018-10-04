@@ -36,6 +36,8 @@ def draw_line(p1, p2):
             delay(0.08)
             frame = ( frame + 1) % 8
 
+
+cnt = 0;
 while running:
      draw_line(points[n-1], points[n])
      print(points[n-1],points[n])

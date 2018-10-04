@@ -48,7 +48,7 @@ while(True):
         character.draw_now(x,y)
         degree = degree-5
         delay(0.01)
-    degree = 0
+    
     
 
 close_canvas()
