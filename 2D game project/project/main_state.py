@@ -13,6 +13,8 @@ name = "MainState"
 
 space = None
 plane = None
+life = None
+score_title = None
 font = None
 
 
@@ -41,19 +43,38 @@ class Plane:
         self.image.draw(self.x, self.y)
 
 
+class Life:
+    def __init__(self):
+        self.image = load_image('player_life.png')
+
+    def draw(self):
+        self.image.draw(100,550)
+
+class Score_title:
+    def __init__(self):
+        self.image = load_image('score_title.png')
+
+    def draw(self):
+        self.image.draw(400,580)
+
+
 
 
 def enter():
-    global plane, space
+    global plane, space, life, score_title
     space = Space()
     plane = Plane()
+    life = Life()
+    score_title = Score_title()
     pass
 
 
 def exit():
-    global space, plane
+    global space, plane, life, score_title
     del(space)
     del(plane)
+    del(life)
+    del(score_title)
     pass
 
 
@@ -85,6 +106,8 @@ def update():
 def draw():
     clear_canvas()
     space.draw()
+    life.draw()
+    score_title.draw()
     plane.draw()
     update_canvas()
     pass
