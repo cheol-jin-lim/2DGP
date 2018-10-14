@@ -30,14 +30,15 @@ class Plane:
     def __init__(self):
         self.x, self.y = 400, 50
         self.image = load_image('Plane.png')
-        self.dir = 1
+        self.dir = 0
 
     def update(self):
-        self.x += self.dir
-        if self.x >= 800:
-            self.dir = -1
-        elif self.x <= 0:
-            self.dir = 1
+       self.x += self.dir
+       # if self.x >= 800:
+           # self.dir = -1
+        #elif self.x <= 0:
+            #self.dir = 1
+
 
     def draw(self):
         self.image.draw(self.x, self.y)
@@ -93,6 +94,15 @@ def handle_events():
             game_framework.quit()
         elif event.type == SDL_KEYDOWN and event.key == SDLK_p:
             game_framework.push_state(pause_state2)
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_LEFT:
+            plane.dir = -3
+        elif event.type == SDL_KEYUP and event.key == SDLK_LEFT:
+            plane.dir = 0
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_RIGHT:
+            plane.dir = 3
+        elif event.type == SDL_KEYUP and event.key == SDLK_RIGHT:
+            plane.dir = 0
+
 
 
     pass
@@ -110,6 +120,7 @@ def draw():
     score_title.draw()
     plane.draw()
     update_canvas()
+    handle_events()
     pass
 
 
