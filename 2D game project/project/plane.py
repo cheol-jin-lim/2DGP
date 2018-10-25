@@ -1,19 +1,21 @@
 from pico2d import *
-from background import *
-from score_title import *
-from player_life import *
+from background import Background
+from score_title import Score_title
+from player_life import Player_life
 from green_enemy import *
+from my_bullet import My_bullet
 
 import game_world
 
 
-RIGHT_DOWN, LEFT_DOWN, RIGHT_UP, LEFT_UP = range(4)
+RIGHT_DOWN, LEFT_DOWN, RIGHT_UP, LEFT_UP,BULLET_A = range(5)
 
 key_event_table = {
     (SDL_KEYDOWN, SDLK_RIGHT): RIGHT_DOWN,
     (SDL_KEYDOWN, SDLK_LEFT): LEFT_DOWN,
     (SDL_KEYUP, SDLK_RIGHT): RIGHT_UP,
     (SDL_KEYUP, SDLK_LEFT): LEFT_UP,
+    (SDL_KEYDOWN, SDLK_a): BULLET_A
 }
 
 class Runstate:
@@ -31,6 +33,8 @@ class Runstate:
 
     @staticmethod
     def exit(plane, event):
+        if event == BULLET_A:
+            plane.fire_bullet()
             pass
 
     @staticmethod
@@ -47,7 +51,7 @@ class Runstate:
 
 
 next_state_table = {
-    Runstate: {RIGHT_UP: Runstate, LEFT_UP: Runstate, LEFT_DOWN: Runstate, RIGHT_DOWN: Runstate}
+    Runstate: {RIGHT_UP: Runstate, LEFT_UP: Runstate, LEFT_DOWN: Runstate, RIGHT_DOWN: Runstate, BULLET_A: Runstate}
 
 }
 
@@ -63,10 +67,9 @@ class Plane:
         self.cur_state = Runstate
         self.cur_state.enter(self, None)
 
-    def fire_ball(self):
-        """my_bullet =My_bullet(self.x, self.y, self.dir * 3)
-         game_world.add_object(my_bullet, 1)
-         """
+    def fire_bullet(self):
+        my_bullet =My_bullet(self.x, self.y, self.dir * 3)
+        game_world.add_object(my_bullet, 1)
         pass
 
     def add_event(self, event):

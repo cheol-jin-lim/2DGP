@@ -6,14 +6,14 @@ class My_bullet:
 
     def __init__(self, x = 400, y = 300, velocity = 1):
         if My_bullet.image == None:
-            My_bullet.image = load_image('my_bullet')
+            My_bullet.image = load_image('my_bullet.png')
         self.x, self.y, self.velocity = x, y, velocity
 
     def draw(self):
         self.image.draw(self.x, self.y)
 
     def update(self):
-        self.x += self.velocity
+        self.y += self.velocity
 
         if self.y < 25 or self.y > 600 - 25:
             game_world.remove_object(self)
