@@ -1,18 +1,17 @@
 import random
 import json
 import os
-from plane import *
+
 from pico2d import *
 
 import game_framework
 import game_world
 import title_state
 import pause_state2
-from background import Background
-from score_title import Score_title
-# from my_bullet import *
-from plane import Plane
-from player_life import Player_life
+from background import *
+from score_title import *
+from plane import *
+from player_life import *
 
 
 
@@ -23,22 +22,22 @@ background = None
 score_title = None
 player_life = None
 plane = None
-
 font = None
 
 
 def enter():
-    global background, score_title,player_life, my_bullet, plane
+    global background, score_title, player_life, my_bullet, plane
     background = Background()
     score_title = Score_title()
     player_life = Player_life()
     # my_bullet = My_bullet()
-    plane = Plane()
+    plane = Plane
     game_world.add_object(background, 0)
-    game_world.add_object(score_title, 1)
-    game_world.add_object(player_life, 1)
+    game_world.add_object(score_title, 0)
+    game_world.add_object(player_life, 0)
     game_world.add_object(plane, 1)
     # game_world.add_object(my_bullet, 1)
+
 
 
 
@@ -74,14 +73,9 @@ def handle_events():
             plane.handle_event(event)
 
 
-
-    pass
-
 def update():
     for game_object in game_world.all_objects():
         game_object.update()
-
-    pass
 
 
 def draw():
