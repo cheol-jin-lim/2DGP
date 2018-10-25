@@ -110,6 +110,23 @@ class Enemy3:
 
 
 
+class bullet:
+
+    global plane
+    bullet_y = 0
+
+    def __init__(self):
+        self.image = load_image('my_bullet.png')
+        bullet_y = plane.y
+    def update(self):
+
+        pass
+
+    def draw(self):
+        self.image.draw(plane.x, plane.y)
+
+
+
 
 
 
@@ -195,8 +212,7 @@ def update():
 
 
 def draw():
-    global green_enemy, blue_enemy, blue_enemy2, green, blue, blue2, plane
-    plane.
+    global green_enemy, blue_enemy, blue_enemy2, green, blue, blue2
     clear_canvas()
     space.draw()
     life.draw()
