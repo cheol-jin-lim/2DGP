@@ -30,6 +30,17 @@ def draw_line(p1, p2,p3,p4):
                 character.clip_draw(frame * 100, 0,90, 90,x, y)
             else:
                 character.clip_draw(frame * 100, 100, 90, 90, x, y)
+        for i in range(0, 100 + 1, 2):
+            t = i / 100
+            x = ((-t**3+2*t**2-t)*p1[0]+(3*t**3 - 5*t**2 + 2)*p2[0]+(-3*t**3 + 4*t**2 + t)*p3[0] + (t**3 - t**2)*p4[0])/2
+            y = ((-t ** 3 + 2 * t ** 2 - t) * p1[1] + (3 * t ** 3 - 5 * t ** 2 + 2) * p2[1] + ( -3 * t ** 3 + 4 * t ** 2 + t) * p3[1] + (t ** 3 - t ** 2) * p4[1]) / 2
+            clear_canvas()
+            kpu_ground.draw(KPU_WIDTH // 2, KPU_HEIGHT // 2)
+            if (dir < 0):
+                character.clip_draw(frame * 100, 0, 90, 90, x, y)
+            else:
+                character.clip_draw(frame * 100, 100, 90, 90, x, y)
+        for i in range(50,100+1,2);
 
 
             update_canvas()
