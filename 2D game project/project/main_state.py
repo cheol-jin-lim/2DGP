@@ -13,6 +13,7 @@ from score_title import Score_title
 from my_bullet import My_bullet
 from plane import Plane
 from player_life import Player_life
+from green_enemy import Green_enemy
 
 
 
@@ -24,19 +25,23 @@ score_title = None
 player_life = None
 plane = None
 my_bullet = None
+green_enemy = []
 font = None
 
 
 def enter():
-    global background, score_title,player_life, plane
+    global background, score_title,player_life, plane, green_enemy, green
     background = Background()
     score_title = Score_title()
     player_life = Player_life()
     plane = Plane()
+    green_enemy = [Green_enemy(i) for i in range(14)]
     game_world.add_object(background, 0)
     game_world.add_object(score_title, 1)
     game_world.add_object(player_life, 1)
     game_world.add_object(plane, 1)
+    for i in range(0, 14):
+        game_world.add_object(green_enemy[i], 1)
 
 
 

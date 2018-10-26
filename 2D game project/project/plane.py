@@ -1,8 +1,8 @@
 from pico2d import *
-from background import Background
+"""from background import Background
 from score_title import Score_title
 from player_life import Player_life
-from green_enemy import *
+from green_enemy import Green_enemy """
 from my_bullet import My_bullet
 
 import game_world
@@ -39,7 +39,7 @@ class Runstate:
 
     @staticmethod
     def do(plane):
-        plane.x += plane.velocity
+        plane.x += plane.velocity * 3
         plane.x = clamp(25, plane.x, 800 - 25)
 
     @staticmethod
