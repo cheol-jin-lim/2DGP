@@ -43,8 +43,8 @@ def draw():
     global select
     if select == True:
         image.draw(400, 300)
-    main_state.space.draw()
-    main_state.plane.draw()
+    main_state.background.draw()
+    # main_state.plane.draw()
     update_canvas()
     pass
 

@@ -30,6 +30,7 @@ my_bullet = None
 green_enemy = []
 blue_enemy = []
 font = None
+skill_bullet = None
 
 
 def enter():
@@ -81,7 +82,9 @@ def handle_events():
         if event.type == SDL_QUIT:
             game_framework.quit()
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
-                game_framework.quit()
+            game_framework.quit()
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_p:
+            game_framework.push_state(pause_state2)
         else:
             plane.handle_event(event)
 
@@ -100,7 +103,6 @@ def draw():
     for game_object in game_world.all_objects():
         game_object.draw()
 
-    delay(0.05)
     update_canvas()
     pass
 

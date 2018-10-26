@@ -27,7 +27,7 @@ class Green_enemy:
 
 
     def draw(self):
-        self.image.clip_draw(self.frame * 50, 0, 50, 100, self.x, self.y)
+        self.image.clip_draw(self.frame * 50, 0, 50 ,100, self.x, self.y)
 
         pass
 
