@@ -15,6 +15,7 @@ from plane import Plane
 from player_life import Player_life
 from green_enemy import Green_enemy
 from blue_enemy import Blue_enemy
+from blue_enemy2 import Blue_enemy2
 
 
 
@@ -32,13 +33,14 @@ font = None
 
 
 def enter():
-    global background, score_title,player_life, plane, green_enemy, green
+    global background, score_title,player_life, plane, green_enemy,blue_enemy, blue_enemy2
     background = Background()
     score_title = Score_title()
     player_life = Player_life()
     plane = Plane()
     green_enemy = [Green_enemy(i) for i in range(14)]
     blue_enemy = [Blue_enemy(i) for i in range(14)]
+    blue_enemy2 = [Blue_enemy2(i) for i in range(14)]
     game_world.add_object(background, 0)
     game_world.add_object(score_title, 1)
     game_world.add_object(player_life, 1)
@@ -47,6 +49,8 @@ def enter():
         game_world.add_object(green_enemy[i], 1)
     for i in range(0, 14):
         game_world.add_object(blue_enemy[i], 1)
+    for i in range(0, 14):
+        game_world.add_object(blue_enemy2[i], 1)
 
 
 
@@ -95,6 +99,8 @@ def draw():
     clear_canvas()
     for game_object in game_world.all_objects():
         game_object.draw()
+
+    delay(0.05)
     update_canvas()
     pass
 
