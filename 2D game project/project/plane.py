@@ -85,6 +85,7 @@ class Plane:
         self.cur_state.enter(self, None)
         self.bullet_count = 0
         self.skill_bullet_count = 0
+        self.font = load_font('ENCR10B.TTF', 16)
 
     def fire_bullet(self):
         my_bullet =My_bullet(self.x, self.y, self.dir * 3)
@@ -109,7 +110,8 @@ class Plane:
 
     def draw(self):
         self.cur_state.draw(self)
-
+        self.font.draw(620, 20,'[basic bullet: %d]' % self.bullet_count,(100, 255, 0))
+        self.font.draw(620, 40, '[Skill bullet: %d]' % self.skill_bullet_count, (100, 255, 0))
     def handle_event(self, event):
         if (event.type, event.key) in key_event_table:
             key_event = key_event_table[(event.type, event.key)]
