@@ -6,6 +6,7 @@ from green_enemy import Green_enemy """
 from my_bullet import My_bullet
 from my_bullet import Skill_bullet
 import game_world
+import game_framework
 
 
 RIGHT_DOWN, LEFT_DOWN, RIGHT_UP, LEFT_UP,BULLET_A,SKILL_S = range(6)
@@ -18,19 +19,27 @@ key_event_table = {
     (SDL_KEYDOWN, SDLK_a): BULLET_A,
     (SDL_KEYDOWN, SDLK_s): SKILL_S
 }
+PIXEL_PER_METER = (10.0/ 0.3) # 10PIXEL 30CM
+RUN_SPEED_KMPH = 20.0 # KM / HOUR
+RUN_SPEED_MPM = (RUN_SPEED_KMPH * 1000.0 / 60.0)
+RUN_SPEED_MPS = (RUN_SPEED_MPM / 60.0)
+RUN_SPEED_PPS = (RUN_SPEED_MPS * PIXEL_PER_METER)
 
+TIME_PER_ACTION = 0.5
+ACTION_PER_TIME = 1.0 / TIME_PER_ACTION
+FRAME_PER_ACTION = 8
 class Runstate:
 
     @staticmethod
     def enter(plane, event):
         if event == RIGHT_DOWN:
-            plane.velocity += 1
+            plane.velocity += RUN_SPEED_PPS
         elif event == LEFT_DOWN:
-            plane.velocity -= 1
+            plane.velocity -= RUN_SPEED_PPS
         elif event == RIGHT_UP:
-            plane.velocity -= 1
+            plane.velocity -= RUN_SPEED_PPS
         elif event == LEFT_UP:
-            plane.velocity += 1
+            plane.velocity += RUN_SPEED_PPS
 
     @staticmethod
     def exit(plane, event):
@@ -56,7 +65,7 @@ class Runstate:
 
     @staticmethod
     def do(plane):
-        plane.x += plane.velocity * 3
+        plane.x += plane.velocity * game_framework.frame_time
         plane.x = clamp(25, plane.x, 800 - 25)
 
     @staticmethod
