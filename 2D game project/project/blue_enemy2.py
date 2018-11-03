@@ -33,6 +33,9 @@ class Blue_enemy2:
 
 
     def update(self):
+        self.total_frame += Blue_enemy2.FRAMES_PER_ACTION * Blue_enemy2.ACTION_PER_TIME * game_framework.frame_time
+        # self.frame = (self.frame + 1) % 2
+        self.frame = int(self.total_frame) % 2
 
         pass
 
