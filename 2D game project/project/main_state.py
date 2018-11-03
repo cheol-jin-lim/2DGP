@@ -104,6 +104,7 @@ def draw():
         game_object.draw()
 
     update_canvas()
+
     pass
 
 

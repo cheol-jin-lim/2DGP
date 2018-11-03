@@ -46,13 +46,11 @@ class Runstate:
         if event == BULLET_A:
             plane.fire_bullet()
             plane.bullet_count += 1
-            print(plane.bullet_count)
+
         if plane.bullet_count == 20:
             plane.skill_bullet_count += 1
             plane.bullet_count = 0
-            print("------------------------")
-            print(plane.skill_bullet_count)
-            print("------------------------")
+
 
 
 

@@ -13,7 +13,7 @@ class Blue_enemy2:
 
     def __init__(self, i):
         Blue_enemy2.image = load_image('Blue_enemy_clip2.png')
-        self.x = 70+50 * i
+        self.x = 50+50 * i
         self.y = 400
         self.frame = 0
 
@@ -22,7 +22,7 @@ class Blue_enemy2:
 
 
     def update(self):
-        self.frame = (self.frame + 1) % 8
+        self.frame = (self.frame + 1) % 2
         pass
 
 
