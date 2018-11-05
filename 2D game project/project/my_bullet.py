@@ -10,7 +10,7 @@ class My_bullet:
         self.x, self.y, self.velocity = x, y, velocity
 
     def get_bb(self):
-        return self.x-10, self.y -10, self.x+10, self.y + 10
+        return self.x-7, self.y -20, self.x+7, self.y + 20
 
     def draw(self):
         self.image.draw(self.x, self.y)

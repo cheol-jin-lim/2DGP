@@ -32,6 +32,24 @@ blue_enemy = []
 font = None
 skill_bullet = None
 
+def collide(a, b):
+    left_a, bottom_a, right_a, top_a = a.get_bb()
+    left_b, bottom_b, right_b, top_b = b.get_bb()
+
+    if left_a > right_b:  # 충돌이 없는경우
+        return False
+    if right_a < left_b:  # 충돌이 없는경우
+        return False
+    if top_a < bottom_b:  # 충돌이 없는경우
+        return False
+    if bottom_a > top_b:  # 충돌이 없는경우
+        return False
+    return True
+
+
+
+
+
 
 def enter():
     global background, score_title,player_life, plane, green_enemy,blue_enemy, blue_enemy2
@@ -95,7 +113,8 @@ def handle_events():
 def update():
     for game_object in game_world.all_objects():
         game_object.update()
-        pass
+
+
 
 
 def draw():
@@ -104,6 +123,7 @@ def draw():
         game_object.draw()
 
     update_canvas()
+    delay(0.05)
 
     pass
 

@@ -27,6 +27,9 @@ class Blue_enemy:
         self.frame = 0
         self.total_frame = 0.0
 
+    def get_bb(self):
+        return self.x - 20, self.y - 20, self.x + 20, self.y + 20
+
 
 
 
@@ -41,6 +44,7 @@ class Blue_enemy:
 
     def draw(self):
         self.image.clip_draw(self.frame * 50, 0, 50, 100, self.x, self.y)
+        draw_rectangle(*self.get_bb())
 
         pass
 
