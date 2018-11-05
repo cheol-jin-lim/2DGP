@@ -9,8 +9,12 @@ class My_bullet:
             My_bullet.image = load_image('my_bullet.png')
         self.x, self.y, self.velocity = x, y, velocity
 
+    def get_bb(self):
+        return self.x-10, self.y -10, self.x+10, self.y + 10
+
     def draw(self):
         self.image.draw(self.x, self.y)
+        draw_rectangle(*self.get_bb())
 
     def update(self):
         self.y += self.velocity * 5

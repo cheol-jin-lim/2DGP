@@ -115,10 +115,19 @@ class Plane:
             self.cur_state = next_state_table[self.cur_state][event]
             self.cur_state.enter(self, event)
 
+    def get_bb(self):
+        return self.x - 20, self.y - 20, self.x + 20, self.y + 20
+
+
+
     def draw(self):
         self.cur_state.draw(self)
         self.font.draw(620, 20,'[basic bullet: %d]' % self.bullet_count,(100, 255, 0))
         self.font.draw(620, 40, '[Skill bullet: %d]' % self.skill_bullet_count, (100, 255, 0))
+        draw_rectangle(*self.get_bb())
+
+
+
     def handle_event(self, event):
         if (event.type, event.key) in key_event_table:
             key_event = key_event_table[(event.type, event.key)]
