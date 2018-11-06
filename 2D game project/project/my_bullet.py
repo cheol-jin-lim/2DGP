@@ -1,5 +1,6 @@
 from pico2d import *
 import game_world
+import game_framework
 
 class My_bullet:
     image = None # 클래스변수
@@ -32,12 +33,15 @@ class Skill_bullet:
         self.x, self.y, self.velocity = x, y, velocity
         self.frame = 1
 
+    def get_bb(self):
+        return self.x-60, self.y -110, self.x+60, self.y + 110
+
     def draw(self):
         self.image.draw(self.x, self.y) # (self.frame * 27, 0, 400, 75, self.x ,self.y)
+        draw_rectangle(*self.get_bb())
 
     def update(self):
         self.y += self.velocity * 5
-        # self.frame = (self.frame + 1 ) % 11
 
         if self.y < 25 or self.y > 600 - 25:
             game_world.remove_object(self)

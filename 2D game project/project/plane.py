@@ -97,8 +97,8 @@ class Plane:
     def fire_bullet(self):
         my_bullet =My_bullet(self.x, self.y, self.dir * 3)
         game_world.add_object(my_bullet, 1)
-        pass
 
+        pass
     def fire_skill_bullet(self):
         skill_bullet = Skill_bullet(self.x, self.y, self.dir * 3)
         game_world.add_object(skill_bullet, 1)
@@ -114,9 +114,10 @@ class Plane:
             self.cur_state.exit(self, event)
             self.cur_state = next_state_table[self.cur_state][event]
             self.cur_state.enter(self, event)
-
     def get_bb(self):
         return self.x - 20, self.y - 20, self.x + 20, self.y + 20
+
+
 
 
 
