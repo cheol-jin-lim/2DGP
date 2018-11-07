@@ -40,6 +40,7 @@ def collide(a, b):
     left_a, bottom_a, right_a, top_a = a.get_bb()
     left_b, bottom_b, right_b, top_b = b.get_bb()
 
+    # print(left_b,bottom_b,right_b,top_b)
     if left_a > right_b:  # 충돌이 없는경우
         return False
     if right_a < left_b:  # 충돌이 없는경우
@@ -61,7 +62,6 @@ def enter():
     score_title = Score_title()
     player_life = Player_life()
     plane = Plane()
-    my_bullet = My_bullet()
     green_enemy = [Green_enemy(i) for i in range(14)]
     blue_enemy = [Blue_enemy(i) for i in range(14)]
     blue_enemy2 = [Blue_enemy2(i) for i in range(14)]
@@ -119,12 +119,10 @@ def update():
         game_object.update()
 
 
-
     """for green_enemy in enemies:
-        if collide(green_enemy, plane.fire_bullet):
+        if collide(green_enemy,game_world.my_bullet):
             enemies.remove(green_enemy)
             game_world.remove_object(green_enemy)"""
-
 
 
 

@@ -10,8 +10,12 @@ class My_bullet:
             My_bullet.image = load_image('my_bullet.png')
         self.x, self.y, self.velocity = x, y, velocity
 
+
+
     def get_bb(self):
+        print(self.x,self.y)
         return self.x-7, self.y -20, self.x+7, self.y + 20
+
 
     def draw(self):
         self.image.draw(self.x, self.y)
@@ -19,6 +23,7 @@ class My_bullet:
 
     def update(self):
         self.y += self.velocity * 5
+
 
         if self.y < 25 or self.y > 600 - 25:
             game_world.remove_object(self)

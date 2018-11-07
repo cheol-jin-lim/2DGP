@@ -95,10 +95,13 @@ class Plane:
         self.font = load_font('ENCR10B.TTF', 16)
 
     def fire_bullet(self):
+        # 객체 불러와서 게임월드 리스트에 객체 추가
         my_bullet =My_bullet(self.x, self.y, self.dir * 3)
         game_world.add_object(my_bullet, 1)
 
-        pass
+
+       # return my_bullet
+
     def fire_skill_bullet(self):
         skill_bullet = Skill_bullet(self.x, self.y, self.dir * 3)
         game_world.add_object(skill_bullet, 1)
