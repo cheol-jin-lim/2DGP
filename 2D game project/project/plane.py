@@ -28,6 +28,9 @@ RUN_SPEED_PPS = (RUN_SPEED_MPS * PIXEL_PER_METER)
 TIME_PER_ACTION = 0.5
 ACTION_PER_TIME = 1.0 / TIME_PER_ACTION
 FRAME_PER_ACTION = 8
+
+
+bullet_list = []
 class Runstate:
 
     @staticmethod
@@ -98,6 +101,7 @@ class Plane:
         # 객체 불러와서 게임월드 리스트에 객체 추가
         my_bullet =My_bullet(self.x, self.y, self.dir * 3)
         game_world.add_object(my_bullet, 1)
+        bullet_list.append(my_bullet)
 
 
        # return my_bullet

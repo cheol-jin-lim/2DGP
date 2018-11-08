@@ -11,7 +11,7 @@ import pause_state2
 from background import Background
 from score_title import Score_title
 from my_bullet import My_bullet
-from plane import Plane
+from plane import *
 from player_life import Player_life
 from green_enemy import Green_enemy
 from blue_enemy import Blue_enemy
@@ -65,7 +65,7 @@ def enter():
     green_enemy = [Green_enemy(i) for i in range(14)]
     blue_enemy = [Blue_enemy(i) for i in range(14)]
     blue_enemy2 = [Blue_enemy2(i) for i in range(14)]
-    enemies = [Green_enemy(i) for i in range(14)] + [Blue_enemy(i) for i in range(14)] + [Blue_enemy2(i) for i in range(14)]
+    # enemies = [Green_enemy(i) for i in range(14)] + [Blue_enemy(i) for i in range(14)] + [Blue_enemy2(i) for i in range(14)]
     game_world.add_object(background, 0)
     game_world.add_object(score_title, 1)
     game_world.add_object(player_life, 1)
@@ -119,10 +119,21 @@ def update():
         game_object.update()
 
 
-    """for green_enemy in enemies:
-        if collide(green_enemy,game_world.my_bullet):
-            enemies.remove(green_enemy)
-            game_world.remove_object(green_enemy)"""
+    for i in range(len(green_enemy)):
+        for bullet in bullet_list:
+            if collide(green_enemy[i], bullet):
+                game_world.remove_object(green_enemy[i])
+                game_world.remove_object(my_bullet)
+                # green_enemy.remove(green_enemy[i])
+                break
+
+    for i in range(len(blue_enemy)):
+        for bullet in bullet_list:
+            if collide(blue_enemy[i], bullet):
+                game_world.remove_object(blue_enemy[i])
+                game_world.remove_object(my_bullet)
+                # blue_enemy.remove(blue_enemy[i])
+                break
 
 
 
@@ -134,6 +145,7 @@ def draw():
 
     update_canvas()
     delay(0.05)
+
 
     pass
 
