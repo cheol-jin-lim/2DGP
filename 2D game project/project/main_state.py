@@ -135,6 +135,14 @@ def update():
                 # blue_enemy.remove(blue_enemy[i])
                 break
 
+    for i in range(len(blue_enemy2)):
+        for bullet in bullet_list:
+            if collide(blue_enemy2[i], bullet):
+                game_world.remove_object(blue_enemy2[i])
+                game_world.remove_object(my_bullet)
+                # blue_enemy.remove(blue_enemy[i])
+                break
+
 
 
 
@@ -144,7 +152,7 @@ def draw():
         game_object.draw()
 
     update_canvas()
-    delay(0.05)
+
 
 
     pass
