@@ -125,7 +125,7 @@ def update():
                 game_world.remove_object(green_enemy[i])
                 game_world.remove_object(my_bullet)
                 # green_enemy.remove(green_enemy[i])
-                break
+
 
     for i in range(len(blue_enemy)):
         for bullet in bullet_list:
@@ -133,7 +133,7 @@ def update():
                 game_world.remove_object(blue_enemy[i])
                 game_world.remove_object(my_bullet)
                 # blue_enemy.remove(blue_enemy[i])
-                break
+
 
     for i in range(len(blue_enemy2)):
         for bullet in bullet_list:
@@ -141,7 +141,7 @@ def update():
                 game_world.remove_object(blue_enemy2[i])
                 game_world.remove_object(my_bullet)
                 # blue_enemy.remove(blue_enemy[i])
-                break
+
 
 
 
