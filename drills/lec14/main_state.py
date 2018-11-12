@@ -7,15 +7,14 @@ import game_framework
 import game_world
 
 from boy import Boy
-from grass import Grass
-from ball import Ball, BigBall
+from ground import Ground
+from zombie import Zombie
+
 
 name = "MainState"
 
 boy = None
-grass = None
-balls = []
-big_balls = []
+zombie = None
 
 
 def collide(a, b):
@@ -23,17 +22,17 @@ def collide(a, b):
     left_a, bottom_a, right_a, top_a = a.get_bb()
     left_b, bottom_b, right_b, top_b = b.get_bb()
 
-    if left_a > right_b:  # 충돌이 없는경우
-        return False
-    if right_a < left_b:  # 충돌이 없는경우
-        return False
-    if top_a < bottom_b:  # 충돌이 없는경우
-        return False
-    if bottom_a > top_b:  # 충돌이 없는경우
-        return False
+    if left_a > right_b: return False
+    if right_a < left_b: return False
+    if top_a < bottom_b: return False
+    if bottom_a > top_b: return False
+
     return True
 
 
+
+def get_boy():
+    return boy
 
 
 def enter():
@@ -41,18 +40,12 @@ def enter():
     boy = Boy()
     game_world.add_object(boy, 1)
 
-    global grass
-    grass = Grass()
-    game_world.add_object(grass, 0)
+    global zombie
+    zombie = Zombie()
+    game_world.add_object(zombie, 1)
 
-    # fill here for balls
-    global balls
-    balls = [Ball() for i in range(10)] + [BigBall() for i in range(10)]
-    game_world.add_objects(balls, 1)
-
-
-
-
+    ground = Ground()
+    game_world.add_object(ground, 0)
 
 def exit():
     game_world.clear()
@@ -79,18 +72,6 @@ def handle_events():
 def update():
     for game_object in game_world.all_objects():
         game_object.update()
-
-    # fill here for collision check
-    for ball in balls:
-        if collide(boy, ball):
-            balls.remove(ball)
-            game_world.remove_object(ball)
-
-    for ball in balls:
-        if collide(grass, ball):
-            ball.stop()
-
-
 
 
 def draw():
