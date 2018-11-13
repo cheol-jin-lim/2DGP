@@ -149,6 +149,13 @@ def update():
                 game_world.remove_object(skill)
                 # green_enemy.remove(green_enemy[i])
 
+    for i in range(len(blue_enemy)):
+        for skill in skill_bullet_list:
+            if collide(blue_enemy[i], skill):
+                game_world.remove_object(blue_enemy[i])
+                game_world.remove_object(skill)
+                # green_enemy.remove(green_enemy[i])
+
 
 
 
