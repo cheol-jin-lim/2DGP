@@ -13,7 +13,6 @@ class My_bullet:
 
 
     def get_bb(self):
-        print(self.x,self.y)
         return self.x-7, self.y -20, self.x+7, self.y + 20
 
 

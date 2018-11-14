@@ -124,7 +124,7 @@ def update():
             if collide(green_enemy[i], bullet):
                 game_world.remove_object(green_enemy[i])
                 game_world.remove_object(bullet)
-               # green_enemy.remove(green_enemy[i])
+                break
 
 
     for i in range(len(blue_enemy)):
@@ -132,7 +132,7 @@ def update():
             if collide(blue_enemy[i], bullet):
                 game_world.remove_object(blue_enemy[i])
                 game_world.remove_object(bullet)
-                # blue_enemy.remove(blue_enemy[i])
+                break
 
 
     for i in range(len(blue_enemy2)):
@@ -140,27 +140,26 @@ def update():
             if collide(blue_enemy2[i], bullet):
                 game_world.remove_object(blue_enemy2[i])
                 game_world.remove_object(bullet)
-                # blue_enemy.remove(blue_enemy[i])
+                break
 
     for i in range(len(green_enemy)):
         for skill in skill_bullet_list:
             if collide(green_enemy[i], skill):
                 game_world.remove_object(green_enemy[i])
-                game_world.remove_object(skill)
-                # green_enemy.remove(green_enemy[i])
+                break
 
     for i in range(len(blue_enemy)):
         for skill in skill_bullet_list:
             if collide(blue_enemy[i], skill):
                 game_world.remove_object(blue_enemy[i])
-                game_world.remove_object(skill)
+                break
 
 
     for i in range(len(blue_enemy2)):
         for skill in skill_bullet_list:
             if collide(blue_enemy2[i], skill):
                 game_world.remove_object(blue_enemy2[i])
-                game_world.remove_object(skill)
+                break
 
 
 

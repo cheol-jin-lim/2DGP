@@ -103,6 +103,7 @@ class Plane:
         my_bullet =My_bullet(self.x, self.y, self.dir * 3)
         game_world.add_object(my_bullet, 1)
         bullet_list.append(my_bullet)
+        bullet_list
 
 
 
