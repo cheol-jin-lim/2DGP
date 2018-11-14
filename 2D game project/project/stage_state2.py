@@ -7,7 +7,6 @@ from pico2d import *
 import game_framework
 import game_world
 import title_state
-import pause_state2
 import main_state
 from background import Background
 from score_title import Score_title
