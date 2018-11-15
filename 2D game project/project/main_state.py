@@ -128,9 +128,6 @@ def update():
                     green_enemy[i] = 0
                     score += 100
                     handle_enemy_count += 1
-
-                    print(score)
-
                     break
 
 
@@ -140,12 +137,12 @@ def update():
         for bullet in bullet_list:
             if blue_enemy[i] != 0:
                 if collide(blue_enemy[i], bullet):
-                    game_world.remove_object(blue_enemy[i])
+                    blue_enemy[i].death_blue_enemy = 1
+                    # game_world.remove_object(blue_enemy[i])
                     game_world.remove_object(bullet)
                     blue_enemy[i] = 0
                     score += 100
                     handle_enemy_count += 1
-                    print(score)
                     break
 
 
@@ -153,12 +150,12 @@ def update():
         for bullet in bullet_list:
             if blue_enemy2[i] != 0:
                 if collide(blue_enemy2[i], bullet):
-                    game_world.remove_object(blue_enemy2[i])
+                    blue_enemy2[i].death_blue_enemy2 = 1
+                    # game_world.remove_object(blue_enemy2[i])
                     game_world.remove_object(bullet)
                     blue_enemy2[i] = 0
                     score += 100
                     handle_enemy_count += 1
-                    print(score)
                     break
 
 
@@ -177,7 +174,7 @@ def draw():
     clear_canvas()
     for game_object in game_world.all_objects():
         game_object.draw()
-    delay(0.05)
+
 
     update_canvas()
 

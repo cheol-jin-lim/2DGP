@@ -50,9 +50,9 @@ class Green_enemy:
 
     def update(self):
         self.total_frame += Green_enemy.FRAMES_PER_ACTION * Green_enemy.ACTION_PER_TIME * game_framework.frame_time
-        self.death_frame += Green_enemy.DEATH_FRAMES_PER_ACTION * Green_enemy.DEATH_ACTION_PER_TIME * game_framework.frame_time
+        self.death_total_frame += Green_enemy.DEATH_FRAMES_PER_ACTION * Green_enemy.DEATH_ACTION_PER_TIME * game_framework.frame_time
         self.frame = int(self.total_frame) % 2
-        self.death_frame = int(self.total_frame) % 4
+        self.death_frame = int(self.death_total_frame) % 4
 
         pass
 
