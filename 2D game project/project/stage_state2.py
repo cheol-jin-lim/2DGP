@@ -19,7 +19,7 @@ from blue_enemy2 import Blue_enemy2
 
 
 
-name = "MainState"
+name = "stage_state2"
 
 
 background = None
@@ -65,7 +65,7 @@ def enter():
     green_enemy = [Green_enemy(i) for i in range(14)]
     blue_enemy = [Blue_enemy(i) for i in range(14)]
     blue_enemy2 = [Blue_enemy2(i) for i in range(14)]
-    # enemies = [Green_enemy(i) for i in range(14)] + [Blue_enemy(i) for i in range(14)] + [Blue_enemy2(i) for i in range(14)]
+
     game_world.add_object(background, 0)
     game_world.add_object(score_title, 1)
     game_world.add_object(player_life, 1)
@@ -106,7 +106,7 @@ def handle_events():
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
             game_framework.quit()
         elif event.type == SDL_KEYDOWN and event.key == SDLK_p:
-            game_framework.push_state(pause_state2)
+            game_framework.push_state(main_state)
         else:
             plane.handle_event(event)
 
