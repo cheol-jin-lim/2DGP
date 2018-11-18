@@ -106,7 +106,7 @@ def handle_events():
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
             game_framework.quit()
         elif event.type == SDL_KEYDOWN and event.key == SDLK_p:
-            game_framework.push_state(main_state)
+            """game_framework.push_state(main_state)"""
         else:
             plane.handle_event(event)
 

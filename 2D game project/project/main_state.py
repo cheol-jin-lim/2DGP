@@ -8,7 +8,8 @@ import game_framework
 import game_world
 import title_state
 import pause_state2
-import stage_state2
+# import stage_state2
+import stage1_clear_state
 from background import Background
 from score_title import Score_title
 from my_bullet import My_bullet
@@ -111,7 +112,7 @@ def handle_events():
 
     if handle_enemy_count == 42:
         print('213')
-        game_framework.push_state(stage_state2)
+        game_framework.push_state(stage1_clear_state)
 
 
 
