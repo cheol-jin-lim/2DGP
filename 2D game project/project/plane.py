@@ -1,8 +1,4 @@
 from pico2d import *
-"""from background import Background
-from score_title import Score_title
-from player_life import Player_life
-from green_enemy import Green_enemy """
 from my_bullet import My_bullet
 from my_bullet import Skill_bullet
 import game_world

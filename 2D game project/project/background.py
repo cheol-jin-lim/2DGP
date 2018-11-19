@@ -1,5 +1,6 @@
 from pico2d import *
 import main_state
+import stage1_clear_state
 
 class Background:
     def __init__(self):
@@ -13,5 +14,5 @@ class Background:
     def draw(self):
         self.image.draw(400, 300)
 
-        if main_state.handle_enemy_count != 42:
+        if stage1_clear_state.logo_time <= 0:
             self.font.draw(400, 540, ' %d ' % main_state.stage1_score, (255, 255, 255))

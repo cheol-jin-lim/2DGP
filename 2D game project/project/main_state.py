@@ -8,7 +8,6 @@ import game_framework
 import game_world
 import title_state
 import pause_state2
-# import stage_state2
 import stage1_clear_state
 from background import Background
 from score_title import Score_title
@@ -60,7 +59,7 @@ def collide(a, b):
 
 
 def enter():
-    global background, score_title,player_life, plane, green_enemy,blue_enemy, blue_enemy2, enemies, my_bullet, stage1_score
+    global background, score_title,player_life, plane, green_enemy,blue_enemy, blue_enemy2, my_bullet, stage1_score
     background = Background()
     score_title = Score_title()
     player_life = Player_life()
@@ -112,6 +111,17 @@ def handle_events():
 
     if handle_enemy_count == 42:
         game_framework.push_state(stage1_clear_state)
+        game_world.remove_object(plane)
+        game_world.remove_object(background)
+        game_world.remove_object(score_title)
+        game_world.remove_object(player_life)
+        for i in range(len(green_enemy)):
+            game_world.remove_object(green_enemy[i])
+            game_world.remove_object(blue_enemy[i])
+            game_world.remove_object(blue_enemy2[i])
+
+
+
 
 
 

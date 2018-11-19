@@ -6,16 +6,15 @@ from pico2d import *
 
 import game_framework
 import game_world
-import title_state
-import main_state
 from background import Background
 from score_title import Score_title
 from my_bullet import My_bullet
 from plane import *
 from player_life import Player_life
-from green_enemy import Green_enemy
-from blue_enemy import Blue_enemy
-from blue_enemy2 import Blue_enemy2
+from red_enemy import Red_enemy
+"""from blue_enemy3 import Blue_enemy3
+from green_enemy2 import Green_enemy2"""
+
 
 
 
@@ -27,12 +26,9 @@ score_title = None
 player_life = None
 plane = None
 my_bullet = None
-green_enemy = []
-blue_enemy = []
-blue_enemy2 = []
 font = None
 skill_bullet = None
-enemies = []
+red_enemy = []
 
 
 
@@ -57,26 +53,21 @@ def collide(a, b):
 
 
 def enter():
-    global background, score_title,player_life, plane, green_enemy,blue_enemy, blue_enemy2, enemies, my_bullet
+    global background, score_title, player_life, plane, my_bullet, red_enemy
     background = Background()
     score_title = Score_title()
     player_life = Player_life()
     plane = Plane()
-    green_enemy = [Green_enemy(i) for i in range(14)]
-    blue_enemy = [Blue_enemy(i) for i in range(14)]
-    blue_enemy2 = [Blue_enemy2(i) for i in range(14)]
+    red_enemy = [Red_enemy(i) for i in range(3)]
 
     game_world.add_object(background, 0)
     game_world.add_object(score_title, 1)
     game_world.add_object(player_life, 1)
     game_world.add_object(plane, 1)
-    # game_world.add_object(enemies, 1)
-    for i in range(0, 14):
-        game_world.add_object(green_enemy[i], 1)
-    for i in range(0, 14):
-        game_world.add_object(blue_enemy[i], 1)
-    for i in range(0, 14):
-        game_world.add_object(blue_enemy2[i], 1)
+    for i in range(3):
+        game_world.add_object(red_enemy[i], 1)
+
+
 
 
 
@@ -117,33 +108,6 @@ def handle_events():
 def update():
     for game_object in game_world.all_objects():
         game_object.update()
-
-
-    for i in range(len(green_enemy)):
-        for bullet in bullet_list:
-            if collide(green_enemy[i], bullet):
-                game_world.remove_object(green_enemy[i])
-                game_world.remove_object(my_bullet)
-                # green_enemy.remove(green_enemy[i])
-
-
-    for i in range(len(blue_enemy)):
-        for bullet in bullet_list:
-            if collide(blue_enemy[i], bullet):
-                game_world.remove_object(blue_enemy[i])
-                game_world.remove_object(my_bullet)
-                # blue_enemy.remove(blue_enemy[i])
-
-
-    for i in range(len(blue_enemy2)):
-        for bullet in bullet_list:
-            if collide(blue_enemy2[i], bullet):
-                game_world.remove_object(blue_enemy2[i])
-                game_world.remove_object(my_bullet)
-                # blue_enemy.remove(blue_enemy[i])
-
-
-
 
 
 def draw():
