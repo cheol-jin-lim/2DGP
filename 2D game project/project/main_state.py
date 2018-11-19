@@ -36,7 +36,7 @@ font = None
 skill_bullet = None
 enemies = []
 
-score = 0
+stage1_score = 0
 handle_enemy_count = 0
 
 def collide(a, b):
@@ -60,7 +60,7 @@ def collide(a, b):
 
 
 def enter():
-    global background, score_title,player_life, plane, green_enemy,blue_enemy, blue_enemy2, enemies, my_bullet, score
+    global background, score_title,player_life, plane, green_enemy,blue_enemy, blue_enemy2, enemies, my_bullet, stage1_score
     background = Background()
     score_title = Score_title()
     player_life = Player_life()
@@ -111,7 +111,6 @@ def handle_events():
             plane.handle_event(event)
 
     if handle_enemy_count == 42:
-        print('213')
         game_framework.push_state(stage1_clear_state)
 
 
@@ -119,7 +118,7 @@ def handle_events():
     pass
 
 def update():
-    global score,handle_enemy_count
+    global stage1_score,handle_enemy_count
     for game_object in game_world.all_objects():
         game_object.update()
 
@@ -132,7 +131,7 @@ def update():
                     # game_world.remove_object(green_enemy[i])
                     game_world.remove_object(bullet)
                     green_enemy[i] = 0
-                    score += 100
+                    stage1_score += 100
                     handle_enemy_count += 1
                     break
 
@@ -147,7 +146,7 @@ def update():
                     # game_world.remove_object(blue_enemy[i])
                     game_world.remove_object(bullet)
                     blue_enemy[i] = 0
-                    score += 100
+                    stage1_score += 100
                     handle_enemy_count += 1
                     break
 
@@ -160,7 +159,7 @@ def update():
                     # game_world.remove_object(blue_enemy2[i])
                     game_world.remove_object(bullet)
                     blue_enemy2[i] = 0
-                    score += 100
+                    stage1_score += 100
                     handle_enemy_count += 1
                     break
 
