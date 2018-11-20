@@ -31,7 +31,7 @@ class Red_enemy:
     def __init__(self, i):
         self.image = load_image('red_enemy_clip.png')
         self.death_image = load_image('dead.png')
-        self.x = 100+50 * i
+        self.x = 450+50 * i
         self.y = 500
         self.frame = 0
         self.death_frame = 0
