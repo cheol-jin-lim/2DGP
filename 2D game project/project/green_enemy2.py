@@ -24,7 +24,7 @@ class Green_enemy2:
             Green_enemy2.image = load_image('test_green_enemy2.png')
 
     def __init__(self):
-        self.x, self.y = 600, 500
+        self.x, self.y = 450, 500
         self.load_image()
         self.dir = random.random()*2*math.pi
         self.speed = 0
@@ -89,7 +89,7 @@ class Green_enemy2:
         self.y += self.speed * math.sin(self.dir) * game_framework.frame_time
 
         self.x = clamp(50, self.x, 700 - 50)
-        self.y = clamp(70, self.y, 500 - 50)
+        self.y = clamp(80, self.y, 500 - 50)
         pass
 
 

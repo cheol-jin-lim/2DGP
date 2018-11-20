@@ -24,7 +24,7 @@ class Blue_enemy3:
             Blue_enemy3.image = load_image('test_blue_enemy3.png')
 
     def __init__(self):
-        self.x, self.y = 700, 500
+        self.x, self.y = 350, 500
         self.load_image()
         self.dir = random.random()*2*math.pi
         self.speed = 0
@@ -89,7 +89,7 @@ class Blue_enemy3:
         self.y += self.speed * math.sin(self.dir) * game_framework.frame_time
 
         self.x = clamp(50, self.x, 700 - 50)
-        self.y = clamp(70, self.y, 500 - 50)
+        self.y = clamp(80, self.y, 500 - 50)
         pass
 
 
