@@ -14,5 +14,5 @@ class Background:
     def draw(self):
         self.image.draw(400, 300)
 
-        if stage1_clear_state.logo_time <= 0:
-            self.font.draw(400, 540, ' %d ' % main_state.stage1_score, (255, 255, 255))
+        # if stage1_clear_state.logo_time <= 0:
+        self.font.draw(400, 540, ' %d ' % main_state.stage1_score, (255, 255, 255))
