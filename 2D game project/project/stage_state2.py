@@ -17,7 +17,7 @@ from green_enemy2 import Green_enemy2
 from green_enemy import Green_enemy
 from blue_enemy import Blue_enemy
 from blue_enemy2 import Blue_enemy2
-
+from middle_boss_enemy import Middle_boss_enemy
 
 
 name = "stage_state2"
@@ -36,6 +36,7 @@ blue_enemy = []
 blue_enemy2 = []
 blue_enemy3 = None
 green_enemy2 = None
+middle_boss_enemy = None
 
 
 
@@ -62,13 +63,14 @@ def get_plane():
 
 def enter():
     global background, score_title, player_life, plane, my_bullet, red_enemy, green_enemy, blue_enemy, blue_enemy2,blue_enemy3\
-        ,green_enemy2
+        ,green_enemy2,middle_boss_enemy
     background = Background()
     score_title = Score_title()
     player_life = Player_life()
     plane = Plane()
     blue_enemy3 = Blue_enemy3()
     green_enemy2 = Green_enemy2()
+    middle_boss_enemy = Middle_boss_enemy()
     red_enemy = [Red_enemy(i) for i in range(5)]
     green_enemy = [Green_enemy(i) for i in range(5)]
     blue_enemy = [Blue_enemy(i) for i in range(5)]
@@ -80,6 +82,7 @@ def enter():
     game_world.add_object(plane, 1)
     game_world.add_object(blue_enemy3, 1)
     game_world.add_object(green_enemy2, 1)
+    game_world.add_object(middle_boss_enemy, 1)
     for i in range(5):
         game_world.add_object(green_enemy[i], 1)
         game_world.add_object(blue_enemy[i], 1)
