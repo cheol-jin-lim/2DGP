@@ -12,12 +12,11 @@ from my_bullet import My_bullet
 from plane import *
 from player_life import Player_life
 from red_enemy import Red_enemy
-"""from blue_enemy3 import Blue_enemy3
-from green_enemy2 import Green_enemy2"""
+from blue_enemy3 import Blue_enemy3
+from green_enemy2 import Green_enemy2
 from green_enemy import Green_enemy
 from blue_enemy import Blue_enemy
 from blue_enemy2 import Blue_enemy2
-from blue_enemy3 import Blue_enemy3
 
 
 
@@ -36,6 +35,7 @@ green_enemy = []
 blue_enemy = []
 blue_enemy2 = []
 blue_enemy3 = None
+green_enemy2 = None
 
 
 
@@ -61,13 +61,15 @@ def get_plane():
 
 
 def enter():
-    global background, score_title, player_life, plane, my_bullet, red_enemy, green_enemy, blue_enemy, blue_enemy2,blue_enemy3
+    global background, score_title, player_life, plane, my_bullet, red_enemy, green_enemy, blue_enemy, blue_enemy2,blue_enemy3\
+        ,green_enemy2
     background = Background()
     score_title = Score_title()
     player_life = Player_life()
     plane = Plane()
     blue_enemy3 = Blue_enemy3()
-    red_enemy = [Red_enemy(i) for i in range(3)]
+    green_enemy2 = Green_enemy2()
+    red_enemy = [Red_enemy(i) for i in range(5)]
     green_enemy = [Green_enemy(i) for i in range(5)]
     blue_enemy = [Blue_enemy(i) for i in range(5)]
     blue_enemy2 = [Blue_enemy2(i ) for i in range(5)]
@@ -77,12 +79,12 @@ def enter():
     game_world.add_object(player_life, 1)
     game_world.add_object(plane, 1)
     game_world.add_object(blue_enemy3, 1)
-    for i in range(3):
-        game_world.add_object(red_enemy[i], 1)
+    game_world.add_object(green_enemy2, 1)
     for i in range(5):
         game_world.add_object(green_enemy[i], 1)
         game_world.add_object(blue_enemy[i], 1)
         game_world.add_object(blue_enemy2[i], 1)
+        game_world.add_object(red_enemy[i], 1)
 
 
 
