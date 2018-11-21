@@ -110,7 +110,7 @@ def handle_events():
         else:
             plane.handle_event(event)
 
-    if handle_enemy_count == 10:
+    if handle_enemy_count == 42:
         game_framework.push_state(stage1_clear_state)
         game_world.remove_object(plane)
         game_world.remove_object(background)
@@ -126,6 +126,10 @@ def handle_events():
 
 
 
+
+
+
+
     pass
 
 def update():
@@ -135,19 +139,21 @@ def update():
 
 
 
-    for i in range(len(green_enemy)):
+    """for i in range(len(green_enemy)):
         for bullet in bullet_list:
             if green_enemy[i] != None:
                 if collide(green_enemy[i], bullet):
                     green_enemy[i].death_green_enemy = 1
-                    # game_world.remove_object(green_enemy[i])
+                    if green_enemy[i].flag == True:
+                        print(green_enemy[i].death_frame)
+                        game_world.remove_object(green_enemy[i])
                     game_world.remove_object(bullet)
                     # green_enemy.remove(green_enemy[i])
                     green_enemy[i] = None
                     stage1_score += 100
                     handle_enemy_count += 1
-                    break
-    """for enemy in green_enemy:
+                    break"""
+    for enemy in green_enemy:
         for bullet in bullet_list:
             if enemy != None:
                 if collide(enemy, bullet):
@@ -158,7 +164,6 @@ def update():
                     # enemy.death_green_enemy = 1
                     stage1_score += 100
                     handle_enemy_count += 1
-                    print('충돌')
                     break
 
     for enemy in blue_enemy:
@@ -172,12 +177,24 @@ def update():
                     # enemy.death_green_enemy = 1
                     stage1_score += 100
                     handle_enemy_count += 1
-                    print('충돌')
-                    break"""
+                    break
+
+    for enemy in blue_enemy2:
+        for bullet in bullet_list:
+            if enemy != None:
+                if collide(enemy, bullet):
+                    game_world.remove_object(enemy)
+                    game_world.remove_object(bullet)
+                    blue_enemy2.remove(enemy)
+                    bullet_list.remove(bullet)
+                    # enemy.death_green_enemy = 1
+                    stage1_score += 100
+                    handle_enemy_count += 1
+                    break
 
 
 
-    for i in range(len(blue_enemy)):
+    """for i in range(len(blue_enemy)):
         for bullet in bullet_list:
             if blue_enemy[i] != 0:
                 if collide(blue_enemy[i], bullet):
@@ -200,7 +217,7 @@ def update():
                     blue_enemy2[i] = 0
                     stage1_score += 100
                     handle_enemy_count += 1
-                    break
+                    break"""
 
 
 
@@ -213,6 +230,8 @@ def draw():
     clear_canvas()
     for game_object in game_world.all_objects():
         game_object.draw()
+
+
 
 
     update_canvas()

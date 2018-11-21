@@ -17,11 +17,16 @@ FRAMES_PER_ACTION = 1
 
 
 class Green_enemy2:
+    DEATH_TIME_PER_ACTION = 1
+    DEATH_ACTION_PER_TIME = 1.0 / DEATH_TIME_PER_ACTION
+    DEATH_FRAMES_PER_ACTION = 4
     image = None
+    death_image = None
 
     def load_image(self):
         if Green_enemy2.image == None:
-            Green_enemy2.image = load_image('final_boss_enemy.png')# ('test_green_enemy2.png')
+            Green_enemy2.image = load_image('test_green_enemy2.png')
+
 
     def __init__(self):
         self.x, self.y = 450, 500
@@ -31,6 +36,11 @@ class Green_enemy2:
         self.timer = 1.0
         self.frame = 0
         self.build_behavior_tree()
+        self.death_green_enemy2 = 0
+        self.death_total_frame = 0.0
+        self.death_frame = 0
+        self.death_image = load_image('dead.png')
+
 
     def wander(self):
         self.speed = RUN_SPEED_PPS
@@ -83,7 +93,8 @@ class Green_enemy2:
     def update(self):
         # fill here
         self.bt.run()
-
+        self.death_total_frame += Green_enemy2.DEATH_FRAMES_PER_ACTION * Green_enemy2.DEATH_ACTION_PER_TIME * game_framework.frame_time
+        self.death_frame = int(self.death_total_frame) % 4
         self.frame = (self.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % FRAMES_PER_ACTION
         self.x += self.speed * math.cos(self.dir) * game_framework.frame_time
         self.y += self.speed * math.sin(self.dir) * game_framework.frame_time
@@ -94,10 +105,19 @@ class Green_enemy2:
 
 
     def draw(self):
-        if math.cos(self.dir) < 0:
-            self.image.composite_draw(0, 'h', self.x, self.y)
-        else:
-            self.image.draw(self.x, self.y)
+        if self.death_green_enemy2 == 0:
+            if math.cos(self.dir) < 0:
+                self.image.composite_draw(0, 'h', self.x, self.y)
+            else:
+                self.image.draw(self.x, self.y)
+
+
+        elif self.death_green_enemy2 == 1:
+            self.death_image.clip_draw(self.death_frame * 70, 0, 70, 80, self.x, self.y)
+            if self.death_frame == 3:
+                self.death_green_enemy2 = 3
+        elif self.death_green_enemy2 == 3:
+            self.death_green_enemy2 = 3
 
         draw_rectangle(*self.get_bb())
 

@@ -26,7 +26,7 @@ class Green_enemy:
 
     image = None
     death_image = None
-
+    enemy = None
 
     def __init__(self, i):
         self.image = load_image('green_enemy_clip.png')
@@ -44,7 +44,8 @@ class Green_enemy:
 
 
 
-
+    def setEnemy(self,enemy):
+        self.enemy = enemy
 
 
 
@@ -71,7 +72,6 @@ class Green_enemy:
 
 
         draw_rectangle(*self.get_bb())
-
 
 
 

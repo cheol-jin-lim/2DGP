@@ -40,7 +40,7 @@ green_enemy2 = None
 middle_boss_enemy = None
 blue_enemy4 = []
 blue_enemy5 = []
-
+green_enemy2_shot_count = 0
 
 def collide(a, b):
     left_a, bottom_a, right_a, top_a = a.get_bb()
@@ -123,22 +123,92 @@ def handle_events():
 
 
 
+
     pass
 
 def update():
+    global green_enemy2,green_enemy2_shot_count
     for game_object in game_world.all_objects():
         game_object.update()
 
-    for i in range(len(red_enemy)):   # 여기서 부터 하기 오류 발 생함 자 꾸
+    for i in range(len(red_enemy)):
         for bullet in bullet_list:
             if red_enemy[i] != None:
                 if collide(red_enemy[i], bullet):
-                    print('충돌')
                     red_enemy[i].death_red_enemy = 1
                     # game_world.remove_object(red_enemy[i])
                     game_world.remove_object(bullet)
                     red_enemy[i] = None
                     break
+
+
+    for i in range(len(green_enemy)):
+        for bullet in bullet_list:
+            if green_enemy[i] != None:
+                if collide(green_enemy[i], bullet):
+                    green_enemy[i].death_green_enemy = 1
+                    # game_world.remove_object(red_enemy[i])
+                    game_world.remove_object(bullet)
+                    green_enemy[i] = None
+                    break
+
+
+    for i in range(len(blue_enemy)):
+        for bullet in bullet_list:
+            if blue_enemy[i] != None:
+                if collide(blue_enemy[i], bullet):
+                    blue_enemy[i].death_blue_enemy = 1
+                    # game_world.remove_object(red_enemy[i])
+                    game_world.remove_object(bullet)
+                    blue_enemy[i] = None
+                    break
+
+
+    for i in range(len(blue_enemy2)):
+        for bullet in bullet_list:
+            if blue_enemy2[i] != None:
+                if collide(blue_enemy2[i], bullet):
+                    blue_enemy2[i].death_blue_enemy2 = 1
+                    # game_world.remove_object(red_enemy[i])
+                    game_world.remove_object(bullet)
+                    blue_enemy2[i] = None
+                    break
+
+    for i in range(len(blue_enemy4)):
+        for bullet in bullet_list:
+            if blue_enemy4[i] != None:
+                if collide(blue_enemy4[i], bullet):
+                    blue_enemy4[i].death_blue_enemy4 = 1
+                    # game_world.remove_object(red_enemy[i])
+                    game_world.remove_object(bullet)
+                    blue_enemy4[i] = None
+                    break
+
+    for i in range(len(blue_enemy5)):
+        for bullet in bullet_list:
+            if blue_enemy5[i] != None:
+                if collide(blue_enemy5[i], bullet):
+                    blue_enemy5[i].death_blue_enemy5 = 1
+                    # game_world.remove_object(red_enemy[i])
+                    game_world.remove_object(bullet)
+                    blue_enemy5[i] = None
+                    break
+    for bullet in bullet_list:
+        if green_enemy2 != 0:
+            if collide(green_enemy2, bullet):
+                green_enemy2_shot_count += 1
+                print("충돌")
+                if green_enemy2_shot_count >= 10:
+                    game_world.remove_object(green_enemy2)
+                game_world.remove_object(bullet)
+                break
+
+    """for bullet in bullet_list:
+        if collide(green_enemy2, bullet):
+            green_enemy2.death_green_enemy2 = 1
+            game_world.remove_object(green_enemy2)
+            game_world.remove_object(bullet)
+            break"""
 
 
 

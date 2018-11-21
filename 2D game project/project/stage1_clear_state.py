@@ -2,6 +2,7 @@ import game_framework
 from pico2d import *
 import main_state
 import stage_state2
+from green_enemy import Green_enemy
 
 name = "stage1_clear_state"
 image = None
@@ -28,6 +29,7 @@ def update():
         game_framework.change_state(stage_state2)
     delay(0.01)
     logo_time += 0.0025
+
     pass
 
 
