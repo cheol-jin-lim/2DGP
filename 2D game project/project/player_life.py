@@ -6,6 +6,7 @@ class Player_life:
         self.frame = 1
         self.x = 50
         self.y = 570
+        self.my_life = 2
 
 
     def update(self):
@@ -13,4 +14,8 @@ class Player_life:
         pass
 
     def draw(self):
-        self.image.draw(self.x, self.y) # clip_draw(self.frame * 50, 0, 50, 50, self.x, self.y)
+        if self.my_life == 2:
+            self.image.clip_draw(0, 0, 100, 50, self.x, self.y)
+
+        if self.my_life == 1:
+            self.image.clip_draw(0, 0, 50, 50, self.x, self.y)

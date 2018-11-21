@@ -40,7 +40,7 @@ green_enemy2 = None
 middle_boss_enemy = None
 blue_enemy4 = []
 blue_enemy5 = []
-green_enemy2_shot_count = 0
+player_life_number = 2
 
 def collide(a, b):
     left_a, bottom_a, right_a, top_a = a.get_bb()
@@ -127,7 +127,7 @@ def handle_events():
     pass
 
 def update():
-    global green_enemy2,green_enemy2_shot_count
+    global green_enemy2,plane,player_life_number,blue_enemy3,middle_boss_enemy
     for game_object in game_world.all_objects():
         game_object.update()
 
@@ -196,12 +196,21 @@ def update():
     for bullet in bullet_list:
         if green_enemy2 != 0:
             if collide(green_enemy2, bullet):
-                green_enemy2_shot_count += 1
-                print("충돌")
-                if green_enemy2_shot_count >= 10:
-                    game_world.remove_object(green_enemy2)
+                game_world.remove_object(green_enemy2)
                 game_world.remove_object(bullet)
                 break
+
+    if collide(plane, green_enemy2):
+        player_life_number -= 1
+    if collide(plane, blue_enemy3):
+        player_life_number -= 1
+    if collide(plane, middle_boss_enemy):
+        player_life_number -= 1
+
+    if player_life_number == 1:
+        player_life.my_life = 1
+
+    # if player_life_number == 0:
 
     """for bullet in bullet_list:
         if collide(green_enemy2, bullet):
