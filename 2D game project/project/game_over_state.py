@@ -7,11 +7,12 @@ import title_state
 name = "game_over_state"
 image = None
 logo_time = 0.0
-
+font = None
 
 def enter():
-    global image
+    global image, font
     image = load_image('end.png')
+    font = load_font('ENCR10B.TTF', 40)
     pass
 
 
@@ -34,10 +35,11 @@ def update():
 
 
 def draw():
-    global image
+    global image, font
     clear_canvas()
     main_state.background.draw()
     image.draw(400, 300)
+    font.draw(170, 400, '[Final Score:%d]' % main_state.stage1_score, (255, 255, 255))
     update_canvas()
     pass
 
