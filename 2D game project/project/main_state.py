@@ -14,11 +14,10 @@ from score_title import Score_title
 from my_bullet import My_bullet
 from plane import *
 from player_life import Player_life
-# from green_enemy import Green_enemy
 from green_enemy import Green_enemy
 from blue_enemy import Blue_enemy
 from blue_enemy2 import Blue_enemy2
-
+import death_enemy
 
 
 name = "MainState"
@@ -110,16 +109,7 @@ def handle_events():
         else:
             plane.handle_event(event)
 
-    if handle_enemy_count == 42:
-        game_framework.push_state(stage1_clear_state)
-        game_world.remove_object(plane)
-        game_world.remove_object(background)
-        game_world.remove_object(score_title)
-        game_world.remove_object(player_life)
-        for i in range(len(green_enemy)):
-            game_world.remove_object(green_enemy[i])
-            game_world.remove_object(blue_enemy[i])
-            game_world.remove_object(blue_enemy2[i])
+
 
 
 
@@ -149,6 +139,7 @@ def update():
                     green_enemy.remove(enemy)
                     bullet_list.remove(bullet)
                     # enemy.death_green_enemy = 1
+                    death_enemy.death_green = 1
                     stage1_score += 100
                     handle_enemy_count += 1
                     break
@@ -182,13 +173,13 @@ def update():
 
     """for i in range(len(green_enemy)):
         for bullet in bullet_list:
-            if green_enemy[i] != None:
+            if green_enemy[i] != 0:
                 if collide(green_enemy[i], bullet):
                     green_enemy[i].death_green_enemy = 1
                     # game_world.remove_object(green_enemy[i])
                     game_world.remove_object(bullet)
                     # green_enemy.remove(green_enemy[i])
-                    green_enemy[i] = None
+                    green_enemy[i] = 0
                     stage1_score += 100
                     handle_enemy_count += 1
                     break
@@ -219,6 +210,19 @@ def update():
                     stage1_score += 100
                     handle_enemy_count += 1
                     break"""
+
+
+    if handle_enemy_count == 42:   # 42마리
+        game_framework.push_state(stage1_clear_state)
+        game_world.remove_object(plane)
+        game_world.remove_object(background)
+        game_world.remove_object(score_title)
+        game_world.remove_object(player_life)
+        for i in range(len(green_enemy)):
+            game_world.remove_object(green_enemy[i])
+            game_world.remove_object(blue_enemy[i])
+            game_world.remove_object(blue_enemy2[i])
+
 
 
 

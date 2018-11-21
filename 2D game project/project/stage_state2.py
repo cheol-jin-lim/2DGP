@@ -7,6 +7,7 @@ from pico2d import *
 import game_framework
 import game_world
 import game_over_state
+import stage_2_clear_state
 from background import Background
 from score_title import Score_title
 from my_bullet import My_bullet
@@ -76,9 +77,6 @@ def enter():
     score_title = Score_title()
     player_life = Player_life()
     plane = Plane()
-    # blue_enemy3 = Blue_enemy3()
-    # green_enemy2 = Green_enemy2()
-    # middle_boss_enemy = Middle_boss_enemy()
     red_enemy = [Red_enemy(i) for i in range(5)]
     green_enemy = [Green_enemy(i) for i in range(5)]
     blue_enemy = [Blue_enemy(i) for i in range(5)]
@@ -88,7 +86,6 @@ def enter():
     green_enemy2 = [Green_enemy2(i) for i in range(3)]
     middle_boss_enemy = [Middle_boss_enemy(i) for i in range(3)]
     blue_enemy3 = [Blue_enemy3(i) for i in range(3)]
-
     game_world.add_object(background, 0)
     game_world.add_object(score_title, 1)
     game_world.add_object(player_life, 1)
@@ -276,13 +273,24 @@ def update():
             player_life_number -= 1
 
 
-    """if collide(plane, blue_enemy3):
-        player_life_number -= 1"""
-    """if collide(plane, middle_boss_enemy):
-        player_life_number -= 1"""
-
     if player_life_number == 1:
         player_life.my_life = 1
+
+    if handle_enemy_count == 2:   # 39마리
+        game_framework.push_state(stage_2_clear_state)
+        game_world.remove_object(plane)
+        game_world.remove_object(background)
+        game_world.remove_object(score_title)
+        game_world.remove_object(player_life)
+        for i in range(len(green_enemy)):
+            print(len(green_enemy))
+            game_world.remove_object(green_enemy[i])
+            game_world.remove_object(blue_enemy[i])
+            game_world.remove_object(blue_enemy2[i])
+            game_world.remove_object(blue_enemy4[i])
+            game_world.remove_object(blue_enemy5[i])
+            game_world.remove_object(red_enemy[i])
+
 
 
 def draw():

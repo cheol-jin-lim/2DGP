@@ -14,6 +14,7 @@ class Death_enemy:
         self.image = load_image('dead.png')
         self.death_frame = 0
         self.death_total_frame = 0.0
+        self.death_green = 0
 
 
     def update(self):
@@ -22,6 +23,7 @@ class Death_enemy:
         pass
 
     def draw(self):
-        self.image.clip_draw(self.death_frame * 70, 0, 70, 80, green_enemy.x, green_enemy.y)"""
+        if self.death_green == 1:
+            self.image.clip_draw(self.death_frame * 70, 0, 70, 80, main_state.enemy.x, green_enemy.y)"""
 
 
