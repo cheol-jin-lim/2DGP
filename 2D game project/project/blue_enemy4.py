@@ -52,7 +52,6 @@ class Blue_enemy4:
         self.total_frame += Blue_enemy4.FRAMES_PER_ACTION * Blue_enemy4.ACTION_PER_TIME * game_framework.frame_time
         self.death_total_frame += Blue_enemy4.DEATH_FRAMES_PER_ACTION * Blue_enemy4.DEATH_ACTION_PER_TIME * game_framework.frame_time
         self.frame = int(self.total_frame) % 2
-        print(int(self.total_frame) % 2)
         self.death_frame = int(self.death_total_frame) % 4
 
 

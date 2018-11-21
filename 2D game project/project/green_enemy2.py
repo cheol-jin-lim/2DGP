@@ -21,7 +21,7 @@ class Green_enemy2:
 
     def load_image(self):
         if Green_enemy2.image == None:
-            Green_enemy2.image = load_image('test_green_enemy2.png')
+            Green_enemy2.image = load_image('final_boss_enemy.png')# ('test_green_enemy2.png')
 
     def __init__(self):
         self.x, self.y = 450, 500

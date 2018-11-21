@@ -56,6 +56,7 @@ def collide(a, b):
     if bottom_a > top_b:  # 충돌이 없는경우
         return False
     return True
+    pass
 
 
 
@@ -95,15 +96,6 @@ def enter():
         game_world.add_object(blue_enemy4[i], 1)
         game_world.add_object(blue_enemy5[i], 1)
 
-
-
-
-
-
-
-
-
-
 def exit():
     game_world.clear()
     pass
@@ -136,6 +128,18 @@ def handle_events():
 def update():
     for game_object in game_world.all_objects():
         game_object.update()
+
+    for i in range(len(red_enemy)):   # 여기서 부터 하기 오류 발 생함 자 꾸
+        for bullet in bullet_list:
+            if red_enemy[i] != None:
+                if collide(red_enemy[i], bullet):
+                    print('충돌')
+                    red_enemy[i].death_red_enemy = 1
+                    # game_world.remove_object(red_enemy[i])
+                    game_world.remove_object(bullet)
+                    red_enemy[i] = None
+                    break
+
 
 
 def draw():
