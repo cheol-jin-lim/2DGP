@@ -28,8 +28,8 @@ class Green_enemy2:
             Green_enemy2.image = load_image('test_green_enemy2.png')
 
 
-    def __init__(self):
-        self.x, self.y = 450, 500
+    def __init__(self, i):
+        self.x, self.y = 450+ 50 * i, 500
         self.load_image()
         self.dir = random.random()*2*math.pi
         self.speed = 0

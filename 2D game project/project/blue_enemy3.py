@@ -23,8 +23,8 @@ class Blue_enemy3:
         if Blue_enemy3.image == None:
             Blue_enemy3.image = load_image('test_blue_enemy3.png')
 
-    def __init__(self):
-        self.x, self.y = 350, 500
+    def __init__(self, i):
+        self.x, self.y = 350 + 50 * i, 500
         self.load_image()
         self.dir = random.random()*2*math.pi
         self.speed = 0

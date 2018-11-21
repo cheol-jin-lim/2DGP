@@ -1,11 +1,14 @@
 from pico2d import *
 import main_state
 import stage1_clear_state
+import stage_state2
+
 
 class Background:
     def __init__(self):
         self.image = load_image('backgroundmap.png')
         self.font = load_font('ENCR10B.TTF', 40)
+
 
 
     def update(self):

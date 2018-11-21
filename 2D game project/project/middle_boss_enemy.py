@@ -23,8 +23,8 @@ class Middle_boss_enemy:
         if Middle_boss_enemy.image == None:
             Middle_boss_enemy.image = load_image('middle_boss_enemy.png')
 
-    def __init__(self):
-        self.x, self.y = 400, 500
+    def __init__(self, i):
+        self.x, self.y = 400+50 * i, 500
         self.load_image()
         self.dir = random.random()*2*math.pi
         self.speed = 0
