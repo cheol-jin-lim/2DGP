@@ -2,16 +2,16 @@ import game_framework
 from pico2d import *
 import main_state
 import stage_state2
-# from green_enemy import Green_enemy
+import title_state
 
-name = "stage1_clear_state"
+name = "game_over_state"
 image = None
 logo_time = 0.0
 
 
 def enter():
     global image
-    image = load_image('stage_clear_image.png')
+    image = load_image('end.png')
     pass
 
 
@@ -26,7 +26,7 @@ def update():
     if(logo_time > 0.5):
         logo_time = 0
         # game_framework.quit()
-        game_framework.change_state(stage_state2)
+        game_framework.quit()
     delay(0.01)
     logo_time += 0.0025
 

@@ -6,6 +6,7 @@ from pico2d import *
 
 import game_framework
 import game_world
+import game_over_state
 from background import Background
 from score_title import Score_title
 from my_bullet import My_bullet
@@ -121,6 +122,9 @@ def handle_events():
         else:
             plane.handle_event(event)
 
+    if player_life_number == 0:
+        game_framework.change_state(game_over_state)
+
 
 
 
@@ -210,7 +214,8 @@ def update():
     if player_life_number == 1:
         player_life.my_life = 1
 
-    # if player_life_number == 0:
+
+
 
     """for bullet in bullet_list:
         if collide(green_enemy2, bullet):
