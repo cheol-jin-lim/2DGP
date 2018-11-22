@@ -9,18 +9,14 @@ import game_world
 
 
 class Death_green_enemy_stage1:
-    PIXEL_PER_METER = (10.0 / 0.3) # 10 pixel 30 cm
-    RUN_SPEED_KMPH = 20.0  # Km / Hour
-    RUN_SPEED_MPM = (RUN_SPEED_KMPH * 1000.0 / 60.0)
-    RUN_SPEED_MPS = (RUN_SPEED_MPM / 60.0)
-    RUN_SPEED_PPS = (RUN_SPEED_MPS * PIXEL_PER_METER)
 
 
-    TIME_PER_ACTION = 1
+
+    TIME_PER_ACTION = 1.0
     ACTION_PER_TIME = 1.0 / TIME_PER_ACTION
     FRAMES_PER_ACTION = 1
 
-    DEATH_TIME_PER_ACTION = 1
+    DEATH_TIME_PER_ACTION = 1.0
     DEATH_ACTION_PER_TIME = 1.0 / DEATH_TIME_PER_ACTION
     DEATH_FRAMES_PER_ACTION = 4
 
@@ -30,11 +26,16 @@ class Death_green_enemy_stage1:
 
     def __init__(self, i):
         self.image = load_image('dead.png')
+        self.dead_enemy = False
+        self.dead_enemy2 = False
         self.x = 50+50 * i
         self.y = 500
+
+
+
         self.frame = 0
         self.total_frame = 0.0
-        self.dead_enemy = False
+
 
 
     def get_bb(self):
@@ -42,7 +43,7 @@ class Death_green_enemy_stage1:
 
 
     def update(self):
-        self.total_frame += Death_green_enemy_stage1.FRAMES_PER_ACTION * Death_green_enemy_stage1.ACTION_PER_TIME * game_framework.frame_time
+        self.total_frame += Death_green_enemy_stage1.FRAMES_PER_ACTION * Death_green_enemy_stage1.ACTION_PER_TIME  * game_framework.frame_time
         self.frame = int(self.total_frame) % 4
 
 
@@ -51,6 +52,11 @@ class Death_green_enemy_stage1:
 
     def draw(self):
         if self.dead_enemy==True:
+            self.image.clip_draw(self.frame * 65, 0, 65 ,80, self.x, self.y)
+            if self.frame == 3:
+                self.dead_enemy = False
+
+        if self.dead_enemy2==True:
             self.image.clip_draw(self.frame * 65, 0, 65 ,80, self.x, self.y)
             if self.frame == 3:
                 self.dead_enemy = False

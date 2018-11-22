@@ -150,7 +150,7 @@ def update():
         for bullet in bullet_list:
             if red_enemy[i] != None:
                 if collide(red_enemy[i], bullet):
-                    red_enemy[i].death_red_enemy = 1
+                    # red_enemy[i].death_red_enemy = 1
                     # game_world.remove_object(red_enemy[i])
                     game_world.remove_object(bullet)
                     red_enemy[i] = None
@@ -163,7 +163,7 @@ def update():
         for bullet in bullet_list:
             if green_enemy[i] != None:
                 if collide(green_enemy[i], bullet):
-                    green_enemy[i].death_green_enemy = 1
+                    # green_enemy[i].death_green_enemy = 1
                     # game_world.remove_object(red_enemy[i])
                     game_world.remove_object(bullet)
                     green_enemy[i] = None
@@ -176,7 +176,7 @@ def update():
         for bullet in bullet_list:
             if blue_enemy[i] != None:
                 if collide(blue_enemy[i], bullet):
-                    blue_enemy[i].death_blue_enemy = 1
+                    # blue_enemy[i].death_blue_enemy = 1
                     # game_world.remove_object(red_enemy[i])
                     game_world.remove_object(bullet)
                     blue_enemy[i] = None
@@ -189,7 +189,7 @@ def update():
         for bullet in bullet_list:
             if blue_enemy2[i] != None:
                 if collide(blue_enemy2[i], bullet):
-                    blue_enemy2[i].death_blue_enemy2 = 1
+                    # blue_enemy2[i].death_blue_enemy2 = 1
                     # game_world.remove_object(red_enemy[i])
                     game_world.remove_object(bullet)
                     blue_enemy2[i] = None
@@ -201,7 +201,7 @@ def update():
         for bullet in bullet_list:
             if blue_enemy4[i] != None:
                 if collide(blue_enemy4[i], bullet):
-                    blue_enemy4[i].death_blue_enemy4 = 1
+                    # blue_enemy4[i].death_blue_enemy4 = 1
                     # game_world.remove_object(red_enemy[i])
                     game_world.remove_object(bullet)
                     blue_enemy4[i] = None
@@ -213,7 +213,7 @@ def update():
         for bullet in bullet_list:
             if blue_enemy5[i] != None:
                 if collide(blue_enemy5[i], bullet):
-                    blue_enemy5[i].death_blue_enemy5 = 1
+                    # blue_enemy5[i].death_blue_enemy5 = 1
                     # game_world.remove_object(red_enemy[i])
                     game_world.remove_object(bullet)
                     blue_enemy5[i] = None
