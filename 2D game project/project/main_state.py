@@ -18,7 +18,7 @@ from green_enemy import Green_enemy
 from blue_enemy import Blue_enemy
 from blue_enemy2 import Blue_enemy2
 from death_green_enemy_stage1 import Death_green_enemy_stage1
-
+from death_blue_enemy_stage1 import Death_blue_enemy_stage1
 
 name = "MainState"
 
@@ -35,6 +35,8 @@ font = None
 skill_bullet = None
 enemies = []
 death_green_enemy_stage1 = []
+death_blue_enemy_stage1 = []
+
 
 stage1_score = 0
 handle_enemy_count = 0
@@ -60,7 +62,8 @@ def collide(a, b):
 
 
 def enter():
-    global background, score_title,player_life, plane, green_enemy,blue_enemy, blue_enemy2, my_bullet, stage1_score,death_green_enemy_stage1
+    global background, score_title,player_life, plane, green_enemy,blue_enemy, blue_enemy2, my_bullet, stage1_score,death_green_enemy_stage1\
+        ,death_blue_enemy_stage1
     background = Background()
     score_title = Score_title()
     player_life = Player_life()
@@ -69,6 +72,7 @@ def enter():
     blue_enemy = [Blue_enemy(i) for i in range(14)]
     blue_enemy2 = [Blue_enemy2(i) for i in range(14)]
     death_green_enemy_stage1 = [Death_green_enemy_stage1(i) for i in range(14)]
+    death_blue_enemy_stage1 = [Death_blue_enemy_stage1(i) for i in range(14)]
     game_world.add_object(background, 0)
     game_world.add_object(score_title, 1)
     game_world.add_object(player_life, 1)
@@ -78,6 +82,7 @@ def enter():
         game_world.add_object(blue_enemy[i], 1)
         game_world.add_object(blue_enemy2[i], 1)
         game_world.add_object(death_green_enemy_stage1[i], 1)
+        game_world.add_object(death_blue_enemy_stage1[i], 1)
 
 
 
@@ -146,7 +151,7 @@ def update():
                     # death_enemy.death_green = 1
                     stage1_score += 100
                     handle_enemy_count += 1
-                    break"""
+                    break
 
     for enemy in blue_enemy:
         for bullet in bullet_list:
@@ -159,9 +164,9 @@ def update():
                     # enemy.death_green_enemy = 1
                     stage1_score += 100
                     handle_enemy_count += 1
-                    break
+                    break"""
 
-    for enemy in blue_enemy2:
+    """for enemy in blue_enemy2:
         for bullet in bullet_list:
             if enemy != None:
                 if collide(enemy, bullet):
@@ -172,7 +177,7 @@ def update():
                     # enemy.death_green_enemy = 1
                     stage1_score += 100
                     handle_enemy_count += 1
-                    break
+                    break"""
 
 
     for i in range(len(green_enemy)):
@@ -183,6 +188,20 @@ def update():
                     game_world.remove_object(bullet_list[j])
                     death_green_enemy_stage1[i].dead_enemy = True
                     green_enemy[i] = 0
+
+                    # death_enemy.remove(death_enemy[i])
+                    stage1_score += 100
+                    handle_enemy_count += 1
+                    break
+
+    for i in range(len(blue_enemy)):
+        for j in range(len(bullet_list)):
+            if blue_enemy[i] != 0:
+                if collide(blue_enemy[i], bullet_list[j]):
+                    game_world.remove_object(blue_enemy[i])
+                    game_world.remove_object(bullet_list[j])
+                    death_blue_enemy_stage1[i].dead_enemy = True
+                    blue_enemy[i] = 0
 
                     # death_enemy.remove(death_enemy[i])
                     stage1_score += 100
@@ -223,8 +242,8 @@ def update():
         game_world.remove_object(background)
         game_world.remove_object(score_title)
         game_world.remove_object(player_life)
-        for i in range(len(green_enemy)):
-            """game_world.remove_object(green_enemy[i])
+        """for i in range(len(green_enemy)):
+            game_world.remove_object(green_enemy[i])
             # game_world.remove_object(blue_enemy[i])
              game_world.remove_object(blue_enemy2[i])"""
             # game_world.remove_object(death_enemy[i])
