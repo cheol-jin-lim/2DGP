@@ -140,11 +140,11 @@ def update():
         for bullet in bullet_list:
             if collide(enemy, bullet):
                 green_enemy.remove(enemy)
-                # bullet.collide_sound()
                 bullet_list.remove(bullet)
                 game_world.remove_object(enemy)
                 game_world.remove_object(bullet)
                 death_green_enemy_stage1[enemy.count].dead_enemy = True
+                death_green_enemy_stage1[enemy.count].explosion()
                 stage1_score += 100
                 handle_enemy_count += 1
 
@@ -156,6 +156,7 @@ def update():
                 game_world.remove_object(enemy)
                 game_world.remove_object(bullet)
                 death_blue_enemy_stage1[enemy.count].dead_enemy = True
+                death_blue_enemy_stage1[enemy.count].explosion()
                 stage1_score += 100
                 handle_enemy_count += 1
 
