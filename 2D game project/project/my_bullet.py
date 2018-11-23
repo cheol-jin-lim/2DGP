@@ -10,10 +10,18 @@ class My_bullet:
             My_bullet.image = load_image('my_bullet.png')
         self.x, self.y, self.velocity = x, y, velocity
 
+        self.collide_sound = load_wav('pickup.wav')
+        self.collide_sound.set_volume(32)
+
 
 
     def get_bb(self):
         return self.x-7, self.y -20, self.x+7, self.y + 20
+
+    def collide_sound(self):
+        self.collide_sound.play()
+
+
 
 
     def draw(self):

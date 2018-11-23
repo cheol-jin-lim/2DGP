@@ -140,6 +140,7 @@ def update():
         for bullet in bullet_list:
             if collide(enemy, bullet):
                 green_enemy.remove(enemy)
+                # bullet.collide_sound()
                 bullet_list.remove(bullet)
                 game_world.remove_object(enemy)
                 game_world.remove_object(bullet)
