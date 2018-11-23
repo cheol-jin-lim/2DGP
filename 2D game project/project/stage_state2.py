@@ -32,6 +32,7 @@ from death_blue_enemy2_stage1 import Death_blue_enemy2_stage1
 from death_green_enemy2 import Dead_effect
 from death_boss_enemy import Dead_effect
 from death_blue_enemy3 import Dead_effect
+from death_plane import Death_plane
 name = "stage_state2"
 
 
@@ -62,7 +63,11 @@ stage2_score = 0
 test_dead = None
 test_dead_boss = None
 test_dead_blue_enemy3 = None
+death_plane_boss =None
+death_plane_blue_enemy3 =None
+death_plane_green_enemy2 =None
 stage2_clear_wait_time = 0.0
+invincible_time = 0.0
 
 
 handle_enemy_count = 0
@@ -165,7 +170,8 @@ def handle_events():
     pass
 
 def update():
-    global handle_enemy_count, player_life_number, test_dead, test_dead_blue_enemy3, test_dead_boss, stage2_clear_wait_time
+    global handle_enemy_count, player_life_number, test_dead, test_dead_blue_enemy3, test_dead_boss, stage2_clear_wait_time,death_plane_boss,\
+        invincible_time,death_plane_green_enemy2,death_plane_blue_enemy3, plane
     for game_object in game_world.all_objects():
         game_object.update()
 
@@ -287,15 +293,36 @@ def update():
 
     for enemy in middle_boss_enemy:
         if collide(enemy, plane):
-            player_life_number -= 1
+            # player_life_number -= 1
+            death_plane_boss = Death_plane(plane.x, plane.y)
+            game_world.add_object(death_plane_boss, 1)
+            game_world.remove_object(plane)
+            game_world.remove_object(enemy)
+            death_plane_boss.dead_plane = True
+            delay(0.1)
+            death_plane_boss.explosion()
 
     for enemy in blue_enemy3:
         if collide(enemy, plane):
             player_life_number -= 1
+            death_plane_blue_enemy3 = Death_plane(plane.x, plane.y)
+            game_world.add_object(death_plane_blue_enemy3, 1)
+            game_world.remove_object(plane)
+            game_world.remove_object(enemy)
+            death_plane_blue_enemy3.dead_plane = True
+            delay(0.1)
+            death_plane_blue_enemy3.explosion()
 
     for enemy in green_enemy2:
         if collide(enemy, plane):
             player_life_number -= 1
+            death_plane_green_enemy2 = Death_plane(plane.x, plane.y)
+            game_world.add_object(death_plane_green_enemy2, 1)
+            game_world.remove_object(plane)
+            game_world.remove_object(enemy)
+            death_plane_green_enemy2.dead_plane = True
+            delay(0.1)
+            death_plane_green_enemy2.explosion()
 
 
     if player_life_number == 1:

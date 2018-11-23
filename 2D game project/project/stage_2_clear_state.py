@@ -10,7 +10,7 @@ logo_time = 0.0
 bgm = None
 
 def enter():
-    global image
+    global image, bgm
     image = load_image('stage_clear_image.png')
     bgm = load_wav('stage_clear_sound.wav')
     bgm.set_volume(64)
