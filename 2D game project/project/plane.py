@@ -97,8 +97,14 @@ class Plane:
         self.shoot_sound = load_wav('player_shoot_sound.wav')
         self.shoot_sound.set_volume(32)
 
+        self.skill_shoot_sound = load_wav('skill_bullet_sound.wav')
+        self.skill_shoot_sound.set_volume(64)
+
     def shoot(self):
         self.shoot_sound.play()
+
+    def skill_shoot(self):
+        self.skill_shoot_sound.play()
 
     def fire_bullet(self):
         my_bullet =My_bullet(self.x, self.y, self.dir * 3)
@@ -110,6 +116,7 @@ class Plane:
         skill_bullet = Skill_bullet(self.x, self.y, self.dir * 3)
         game_world.add_object(skill_bullet, 1)
         bullet_list.append(skill_bullet)
+        Plane.skill_shoot(self)
         pass
 
     def add_event(self, event):

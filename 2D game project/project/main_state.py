@@ -168,6 +168,7 @@ def update():
                 game_world.remove_object(enemy)
                 game_world.remove_object(bullet)
                 death_blue_enemy2_stage1[enemy.count].dead_enemy = True
+                death_blue_enemy2_stage1[enemy.count].explosion()
                 stage1_score += 100
                 handle_enemy_count += 1
 
