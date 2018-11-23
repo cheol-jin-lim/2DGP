@@ -31,6 +31,7 @@ from death_blue_enemy_stage1 import Death_blue_enemy_stage1
 from death_blue_enemy2_stage1 import Death_blue_enemy2_stage1
 from death_green_enemy2 import Dead_effect
 from death_boss_enemy import Dead_effect
+from death_blue_enemy3 import Dead_effect
 name = "stage_state2"
 
 
@@ -60,6 +61,8 @@ player_life_number = 2
 stage2_score = 0
 test_dead = None
 test_dead_boss = None
+test_dead_blue_enemy3 = None
+stage_clear_wait_time = 0.0
 
 
 handle_enemy_count = 0
@@ -88,7 +91,7 @@ def get_plane():
 def enter():
     global background, score_title, player_life, plane, my_bullet, red_enemy, green_enemy, blue_enemy, blue_enemy2,blue_enemy3\
         ,green_enemy2,middle_boss_enemy, blue_enemy4, blue_enemy5, death_red_enemy_stage2, death_green_enemy_stage1, \
-        death_blue_enemy4_stage2, death_blue_enemy5_stage2,death_blue_enemy2_stage1,death_blue_enemy_stage1,test_dead
+        death_blue_enemy4_stage2, death_blue_enemy5_stage2,death_blue_enemy2_stage1,death_blue_enemy_stage1
     background = Background()
     score_title = Score_title()
     player_life = Player_life()
@@ -162,25 +165,10 @@ def handle_events():
     pass
 
 def update():
-    global handle_enemy_count, player_life_number, test_dead
+    global handle_enemy_count, player_life_number, test_dead, test_dead_blue_enemy3, test_dead_boss, stage_clear_wait_time
     for game_object in game_world.all_objects():
         game_object.update()
 
-
-
-
-    """for i in range(len(red_enemy)):
-        for j in range(len(bullet_list)):
-            if red_enemy[i] != 0:
-                if collide(red_enemy[i], bullet_list[j]):
-                    game_world.remove_object(red_enemy[i])
-                    game_world.remove_object(bullet_list[j])
-                    death_red_enemy_stage2[i].dead_enemy = True
-                    red_enemy[i] = 0
-                    # death_enemy.remove(death_enemy[i])
-                    main_state.stage1_score += 100
-                    handle_enemy_count += 1
-                    break"""
     for enemy in red_enemy:
         for bullet in bullet_list:
             if collide(enemy, bullet):
@@ -268,6 +256,8 @@ def update():
         for bullet in bullet_list:
             if enemy != None:
                 if collide(enemy, bullet):
+                    test_dead_blue_enemy3 = Dead_effect(enemy.x, enemy.y)
+                    game_world.add_object(test_dead_blue_enemy3, 1)
                     game_world.remove_object(enemy)
                     game_world.remove_object(bullet)
                     blue_enemy3.remove(enemy)
@@ -316,6 +306,11 @@ def update():
         game_world.remove_object(blue_enemy2)
         game_world.remove_object(blue_enemy4)
         game_world.remove_object(blue_enemy5)
+        game_world.remove_object(test_dead)
+        game_world.remove_object(test_dead_boss)
+        game_world.remove_object(test_dead_blue_enemy3)
+
+
 
 
 

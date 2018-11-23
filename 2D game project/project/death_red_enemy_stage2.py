@@ -43,7 +43,7 @@ class Death_red_enemy_stage2:
 
     def update(self):
         if self.dead_enemy == True:
-            self.total_frame += Death_red_enemy_stage2.FRAMES_PER_ACTION * Death_red_enemy_stage2.ACTION_PER_TIME * game_framework.frame_time
+            self.total_frame += 15 * Death_red_enemy_stage2.FRAMES_PER_ACTION * Death_red_enemy_stage2.ACTION_PER_TIME * game_framework.frame_time
             self.frame = int(self.total_frame) % 4
 
 

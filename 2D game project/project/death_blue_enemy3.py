@@ -45,7 +45,7 @@ class Dead_effect:
 
 
     def update(self):
-        self.total_frame += Dead_effect.FRAMES_PER_ACTION * Dead_effect.ACTION_PER_TIME * game_framework.frame_time
+        self.total_frame += 15 * Dead_effect.FRAMES_PER_ACTION * Dead_effect.ACTION_PER_TIME * game_framework.frame_time
         self.frame = int(self.total_frame) % 4
 
 
@@ -58,7 +58,7 @@ class Dead_effect:
         if self.frame == 3:
             self.dead_enemy = True
 
-        draw_rectangle(*self.get_bb())
+
 
 
 
