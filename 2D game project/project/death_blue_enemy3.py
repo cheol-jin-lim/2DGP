@@ -37,6 +37,11 @@ class Dead_effect:
         self.frame = 0
         self.total_frame = 0.0
         self.dead_enemy = False
+        self.explosion_sound = load_wav('explosion_sound.wav')
+        self.explosion_sound.set_volume(32)
+
+    def explosion(self):
+        self.explosion_sound.play()
 
 
 

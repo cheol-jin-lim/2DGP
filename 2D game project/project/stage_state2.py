@@ -177,6 +177,7 @@ def update():
                 game_world.remove_object(enemy)
                 game_world.remove_object(bullet)
                 death_red_enemy_stage2[enemy.count].dead_enemy = True
+                death_red_enemy_stage2[enemy.count].explosion()
                 main_state.stage1_score += 500
                 handle_enemy_count += 1
 
@@ -188,6 +189,7 @@ def update():
                 game_world.remove_object(enemy)
                 game_world.remove_object(bullet)
                 death_blue_enemy4_stage2[enemy.count].dead_enemy = True
+                death_blue_enemy4_stage2[enemy.count].explosion()
                 main_state.stage1_score += 500
                 handle_enemy_count += 1
 
@@ -199,6 +201,7 @@ def update():
                 game_world.remove_object(enemy)
                 game_world.remove_object(bullet)
                 death_blue_enemy5_stage2[enemy.count].dead_enemy = True
+                death_blue_enemy5_stage2[enemy.count].explosion()
                 main_state.stage1_score += 500
                 handle_enemy_count += 1
 
@@ -210,6 +213,7 @@ def update():
                 game_world.remove_object(enemy)
                 game_world.remove_object(bullet)
                 death_green_enemy_stage1[enemy.count].dead_enemy = True
+                death_green_enemy_stage1[enemy.count].explosion()
                 main_state.stage1_score += 500
                 handle_enemy_count += 1
 
@@ -221,6 +225,7 @@ def update():
                 game_world.remove_object(enemy)
                 game_world.remove_object(bullet)
                 death_blue_enemy_stage1[enemy.count].dead_enemy = True
+                death_blue_enemy_stage1[enemy.count].explosion()
                 main_state.stage1_score += 500
                 handle_enemy_count += 1
 
@@ -232,6 +237,7 @@ def update():
                 game_world.remove_object(enemy)
                 game_world.remove_object(bullet)
                 death_blue_enemy2_stage1[enemy.count].dead_enemy = True
+                death_blue_enemy2_stage1[enemy.count].explosion()
                 main_state.stage1_score += 500
                 handle_enemy_count += 1
 
