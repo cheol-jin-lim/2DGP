@@ -39,7 +39,7 @@ def draw():
     clear_canvas()
     main_state.background.draw()
     image.draw(400, 300)
-    font.draw(170, 400, '[Final Score:%d]' % main_state.stage1_score, (255, 255, 255))
+    font.draw(170, 450, '[Final Score:%d]' % main_state.stage1_score, (255, 255, 255))
     update_canvas()
     pass
 

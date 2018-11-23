@@ -9,11 +9,14 @@ import death_blue_enemy2_stage1
 name = "stage1_clear_state"
 image = None
 logo_time = 0.0
-
+bgm = None
 
 def enter():
-    global image
+    global image, bgm
     image = load_image('stage_clear_image.png')
+    bgm = load_wav('stage_clear_sound.wav')
+    bgm.set_volume(64)
+    bgm.play()
     pass
 
 
