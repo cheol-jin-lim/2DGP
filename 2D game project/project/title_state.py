@@ -11,9 +11,9 @@ bgm = None
 def enter():
     global image, bgm
     image = load_image('main.png')
-    bgm = load_music('Intro.mp3')
+    bgm = load_wav('01StageIntro.wav')
     bgm.set_volume(64)
-    bgm.repeat_play()
+    bgm.play()
     pass
 
 

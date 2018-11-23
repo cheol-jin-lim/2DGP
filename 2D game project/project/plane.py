@@ -94,10 +94,17 @@ class Plane:
         self.skill_bullet_count = 0
         self.font = load_font('ENCR10B.TTF', 16)
 
+        self.shoot_sound = load_wav('player_shoot_sound.wav')
+        self.shoot_sound.set_volume(32)
+
+    def shoot(self):
+        self.shoot_sound.play()
+
     def fire_bullet(self):
         my_bullet =My_bullet(self.x, self.y, self.dir * 3)
         game_world.add_object(my_bullet, 1)
         bullet_list.append(my_bullet)
+        Plane.shoot(self)
 
     def fire_skill_bullet(self):
         skill_bullet = Skill_bullet(self.x, self.y, self.dir * 3)

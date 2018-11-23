@@ -8,9 +8,7 @@ class Background:
     def __init__(self):
         self.image = load_image('backgroundmap.png')
         self.font = load_font('ENCR10B.TTF', 40)
-        self.bgm = load_music('football.mp3')
-        self.bgm.set_volume(64)
-        self.bgm.repeat_play()
+
 
 
 
