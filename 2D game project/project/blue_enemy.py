@@ -38,6 +38,7 @@ class Blue_enemy:
         self.death_frame = 0
         self.death_total_frame = 0.0
         self.death_blue_enemy = 0
+        self.count = i
 
     def get_bb(self):
         return self.x - 20, self.y - 20, self.x + 20, self.y + 20
@@ -57,16 +58,9 @@ class Blue_enemy:
 
 
     def draw(self):
-        if self.death_blue_enemy == 0:
-            self.image.clip_draw(self.frame * 50, 0, 50, 100, self.x, self.y)
+        self.image.clip_draw(self.frame * 50, 0, 50, 100, self.x, self.y)
 
-        elif self.death_blue_enemy == 1:
-            self.death_image.clip_draw(self.death_frame * 70, 0, 70, 80, self.x, self.y)
-            if self.death_frame == 3:
-                self.death_blue_enemy = 3
 
-        elif self.death_blue_enemy == 3:
-            self.death_blue_enemy = 3
         draw_rectangle(*self.get_bb())
 
 

@@ -4,6 +4,7 @@ import game_framework
 from BehaviorTree import BehaviorTree, SelectorNode, SequenceNode, LeafNode
 from pico2d import *
 import stage_state2
+import death_green_enemy2
 
 PIXEL_PER_METER = (10.0 / 0.3)  # 10 pixel 30 cm
 RUN_SPEED_KMPH = 10.0  # Km / Hour
@@ -30,6 +31,7 @@ class Green_enemy2:
 
     def __init__(self, i):
         self.x, self.y = 450+ 50 * i, 500
+        # test_dead.Dead_effect(self.x, self.y)
         self.load_image()
         self.dir = random.random()*2*math.pi
         self.speed = 0

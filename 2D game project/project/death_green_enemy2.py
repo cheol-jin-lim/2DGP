@@ -2,13 +2,15 @@ from pico2d import *
 
 import game_framework
 import game_world
+import stage_state2
 
 
 
 
 
 
-class Death_blue_enemy2_stage1:
+
+class Dead_effect:
     PIXEL_PER_METER = (10.0 / 0.3) # 10 pixel 30 cm
     RUN_SPEED_KMPH = 20.0  # Km / Hour
     RUN_SPEED_MPM = (RUN_SPEED_KMPH * 1000.0 / 60.0)
@@ -28,13 +30,14 @@ class Death_blue_enemy2_stage1:
 
 
 
-    def __init__(self, i):
+    def __init__(self, x, y):
         self.image = load_image('dead.png')
-        self.x = 50 + 50 * i
-        self.y = 400
+        self.x = x
+        self.y = y
         self.frame = 0
         self.total_frame = 0.0
         self.dead_enemy = False
+
 
 
     def get_bb(self):
@@ -42,19 +45,20 @@ class Death_blue_enemy2_stage1:
 
 
     def update(self):
-        if self.dead_enemy == True:
-            self.total_frame += Death_blue_enemy2_stage1.FRAMES_PER_ACTION * Death_blue_enemy2_stage1.ACTION_PER_TIME * game_framework.frame_time
-            self.frame = int(self.total_frame) % 4
+        self.total_frame += Dead_effect.FRAMES_PER_ACTION * Dead_effect.ACTION_PER_TIME * game_framework.frame_time
+        self.frame = int(self.total_frame) % 4
 
 
         pass
 
 
     def draw(self):
-        if self.dead_enemy==True:
-            self.image.clip_draw(self.frame * 65, 0, 65 ,80, self.x, self.y)
-            if self.frame == 3:
-                self.dead_enemy = False
+        if self.dead_enemy == False:
+            self.image.clip_draw(self.frame * 65, 0, 65, 80, self.x, self.y)
+        if self.frame == 3:
+            self.dead_enemy = True
+
+        draw_rectangle(*self.get_bb())
 
 
 

@@ -2,7 +2,7 @@ from pico2d import *
 
 import game_framework
 import game_world
-
+import main_state
 
 
 
@@ -30,9 +30,6 @@ class Death_green_enemy_stage1:
         self.dead_enemy2 = False
         self.x = 50+50 * i
         self.y = 500
-
-
-
         self.frame = 0
         self.total_frame = 0.0
 
@@ -40,11 +37,14 @@ class Death_green_enemy_stage1:
 
     def get_bb(self):
         return self.x - 20, self.y - 20, self.x + 20, self.y + 20
+    def set_poistion(self, x, y):
+        self.x = x , self.y = y
 
 
     def update(self):
-        self.total_frame += Death_green_enemy_stage1.FRAMES_PER_ACTION * Death_green_enemy_stage1.ACTION_PER_TIME  * game_framework.frame_time
-        self.frame = int(self.total_frame) % 4
+        if self.dead_enemy==True:
+            self.total_frame += Death_green_enemy_stage1.FRAMES_PER_ACTION * Death_green_enemy_stage1.ACTION_PER_TIME  * game_framework.frame_time
+            self.frame = int(self.total_frame) % 4
 
 
         pass
@@ -56,10 +56,10 @@ class Death_green_enemy_stage1:
             if self.frame == 3:
                 self.dead_enemy = False
 
-        if self.dead_enemy2==True:
-            self.image.clip_draw(self.frame * 65, 0, 65 ,80, self.x, self.y)
-            if self.frame == 3:
-                self.dead_enemy = False
+
+
+
+
 
 
 

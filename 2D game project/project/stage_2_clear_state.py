@@ -1,6 +1,6 @@
 import game_framework
 from pico2d import *
-import main_state
+import stage_state2
 import final_stage_state
 # from green_enemy import Green_enemy
 
@@ -36,7 +36,6 @@ def update():
 def draw():
     global image
     clear_canvas()
-    main_state.background.draw()
     image.draw(400, 300)
     update_canvas()
     pass

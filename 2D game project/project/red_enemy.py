@@ -30,14 +30,12 @@ class Red_enemy:
 
     def __init__(self, i):
         self.image = load_image('red_enemy_clip.png')
-        self.death_image = load_image('dead.png')
         self.x = 500+50 * i
         self.y = 500
         self.frame = 0
-        self.death_frame = 0
-        self.death_total_frame = 0.0
         self.total_frame = 0.0
-        self.death_red_enemy = 0
+        self.count = i
+
 
     def get_bb(self):
         return self.x - 20, self.y - 20, self.x + 20, self.y + 20
@@ -50,27 +48,15 @@ class Red_enemy:
 
     def update(self):
         self.total_frame += Red_enemy.FRAMES_PER_ACTION * Red_enemy.ACTION_PER_TIME * game_framework.frame_time
-        self.death_total_frame += Red_enemy.DEATH_FRAMES_PER_ACTION * Red_enemy.DEATH_ACTION_PER_TIME * game_framework.frame_time
         self.frame = int(self.total_frame) % 8
-        self.death_frame = int(self.death_total_frame) % 4
+
 
 
         pass
 
 
     def draw(self):
-        if self.death_red_enemy == 0:
-            self.image.clip_draw(self.frame * 50, 0, 50 ,100, self.x, self.y)
-
-        elif self.death_red_enemy == 1:
-            self.death_image.clip_draw(self.death_frame * 70, 0, 70, 80, self.x, self.y)
-            if self.death_frame == 3:
-                self.death_red_enemy = 3
-        elif self.death_red_enemy == 3:
-            self.death_red_enemy = 3
-
-
-
+        self.image.clip_draw(self.frame * 50, 0, 50 ,100, self.x, self.y)
         draw_rectangle(*self.get_bb())
 
 

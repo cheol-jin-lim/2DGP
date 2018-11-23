@@ -29,19 +29,17 @@ score_title = None
 player_life = None
 plane = None
 my_bullet = None
-# green_enemy = []
+green_enemy = []
 blue_enemy = []
 blue_enemy2 = []
 font = None
 skill_bullet = None
-enemies = []
-death_green_enemy_stage1 = []
+death_green_enemy_stage1 = None
 death_blue_enemy_stage1 = []
 death_blue_enemy2_stage1 = []
-
-
 stage1_score = 0
 handle_enemy_count = 0
+
 
 def collide(a, b):
     left_a, bottom_a, right_a, top_a = a.get_bb()
@@ -80,13 +78,12 @@ def enter():
     game_world.add_object(score_title, 1)
     game_world.add_object(player_life, 1)
     game_world.add_object(plane, 1)
-    for i in range(0, len(green_enemy)):
-        game_world.add_object(green_enemy[i], 1)
-        game_world.add_object(blue_enemy[i], 1)
-        game_world.add_object(blue_enemy2[i], 1)
-        game_world.add_object(death_green_enemy_stage1[i], 1)
-        game_world.add_object(death_blue_enemy_stage1[i], 1)
-        game_world.add_object(death_blue_enemy2_stage1[i], 1)
+    game_world.add_objects(green_enemy, 1)
+    game_world.add_objects(blue_enemy, 1)
+    game_world.add_objects(blue_enemy2, 1)
+    game_world.add_objects(death_green_enemy_stage1, 1)
+    game_world.add_objects(death_blue_enemy_stage1, 1)
+    game_world.add_objects(death_blue_enemy2_stage1, 1)
 
 
 
@@ -139,129 +136,55 @@ def update():
     for game_object in game_world.all_objects():
         game_object.update()
 
-
-
-
-    """for enemy in green_enemy:
+    for enemy in green_enemy:
         for bullet in bullet_list:
-            if enemy != None:
-                if collide(enemy, bullet):
-                    game_world.remove_object(enemy)
-                    game_world.remove_object(bullet)
-                    green_enemy.remove(enemy)
-                    death_enemy.dead_enemy = True
-                    bullet_list.remove(bullet)
-                    # enemy.death_green_enemy = 1
-                    # death_enemy.death_green = 1
-                    stage1_score += 100
-                    handle_enemy_count += 1
-                    break
+            if collide(enemy, bullet):
+                green_enemy.remove(enemy)
+                bullet_list.remove(bullet)
+                game_world.remove_object(enemy)
+                game_world.remove_object(bullet)
+                death_green_enemy_stage1[enemy.count].dead_enemy = True
+                stage1_score += 100
+                handle_enemy_count += 1
 
     for enemy in blue_enemy:
         for bullet in bullet_list:
-            if enemy != None:
-                if collide(enemy, bullet):
-                    game_world.remove_object(enemy)
-                    game_world.remove_object(bullet)
-                    blue_enemy.remove(enemy)
-                    bullet_list.remove(bullet)
-                    # enemy.death_green_enemy = 1
-                    stage1_score += 100
-                    handle_enemy_count += 1
-                    break"""
+            if collide(enemy, bullet):
+                blue_enemy.remove(enemy)
+                bullet_list.remove(bullet)
+                game_world.remove_object(enemy)
+                game_world.remove_object(bullet)
+                death_blue_enemy_stage1[enemy.count].dead_enemy = True
+                stage1_score += 100
+                handle_enemy_count += 1
 
-    """for enemy in blue_enemy2:
+    for enemy in blue_enemy2:
         for bullet in bullet_list:
-            if enemy != None:
-                if collide(enemy, bullet):
-                    game_world.remove_object(enemy)
-                    game_world.remove_object(bullet)
-                    blue_enemy2.remove(enemy)
-                    bullet_list.remove(bullet)
-                    # enemy.death_green_enemy = 1
-                    stage1_score += 100
-                    handle_enemy_count += 1
-                    break"""
-
-    for i in range(len(green_enemy)):
-        for j in range(len(bullet_list)):
-            if green_enemy[i] != 0:
-                if collide(green_enemy[i], bullet_list[j]):
-                    game_world.remove_object(green_enemy[i])
-                    game_world.remove_object(bullet_list[j])
-                    death_green_enemy_stage1[i].dead_enemy = True
-                    green_enemy[i] = 0
-                    # death_enemy.remove(death_enemy[i])
-                    stage1_score += 100
-                    handle_enemy_count += 1
-                    break
-
-    for i in range(len(blue_enemy)):
-        for j in range(len(bullet_list)):
-            if blue_enemy[i] != 0:
-                if collide(blue_enemy[i], bullet_list[j]):
-                    game_world.remove_object(blue_enemy[i])
-                    game_world.remove_object(bullet_list[j])
-                    death_blue_enemy_stage1[i].dead_enemy = True
-                    blue_enemy[i] = 0
-
-                    # death_enemy.remove(death_enemy[i])
-                    stage1_score += 100
-                    handle_enemy_count += 1
-                    break
-
-    for i in range(len(blue_enemy2)):
-        for j in range(len(bullet_list)):
-            if blue_enemy2[i] != 0:
-                if collide(blue_enemy2[i], bullet_list[j]):
-                    game_world.remove_object(blue_enemy2[i])
-                    game_world.remove_object(bullet_list[j])
-                    death_blue_enemy2_stage1[i].dead_enemy = True
-                    blue_enemy2[i] = 0
-
-                    # death_enemy.remove(death_enemy[i])
-                    stage1_score += 100
-                    handle_enemy_count += 1
-                    break
+            if collide(enemy, bullet):
+                blue_enemy2.remove(enemy)
+                bullet_list.remove(bullet)
+                game_world.remove_object(enemy)
+                game_world.remove_object(bullet)
+                death_blue_enemy2_stage1[enemy.count].dead_enemy = True
+                stage1_score += 100
+                handle_enemy_count += 1
 
 
 
-    """for i in range(len(blue_enemy)):
-        for bullet in bullet_list:
-            if blue_enemy[i] != 0:
-                if collide(blue_enemy[i], bullet):
-                    blue_enemy[i].death_blue_enemy = 1
-                    # game_world.remove_object(blue_enemy[i])
-                    game_world.remove_object(bullet)
-                    blue_enemy[i] = 0
-                    stage1_score += 100
-                    handle_enemy_count += 1
-                    break
-
-
-    for i in range(len(blue_enemy2)):
-        for bullet in bullet_list:
-            if blue_enemy2[i] != 0:
-                if collide(blue_enemy2[i], bullet):
-                    blue_enemy2[i].death_blue_enemy2 = 1
-                    # game_world.remove_object(blue_enemy2[i])
-                    game_world.remove_object(bullet)
-                    blue_enemy2[i] = 0
-                    stage1_score += 100
-                    handle_enemy_count += 1
-                    break"""
 
 
     if handle_enemy_count == 42:   # 42마리
-        game_framework.push_state(stage1_clear_state)
         game_world.remove_object(plane)
         game_world.remove_object(background)
         game_world.remove_object(score_title)
         game_world.remove_object(player_life)
-        for i in range(14):
-            game_world.remove_object(death_green_enemy_stage1[i])
-            game_world.remove_object(death_blue_enemy_stage1[i])
-            game_world.remove_object(death_blue_enemy2_stage1[i])
+        game_world.remove_object(death_green_enemy_stage1)
+        game_world.remove_object(death_blue_enemy_stage1)
+        game_world.remove_object(death_blue_enemy2_stage1)
+        game_world.remove_object(death_green_enemy_stage1)
+        game_world.remove_object(death_blue_enemy_stage1)
+        game_world.remove_object(death_blue_enemy2_stage1)
+        game_framework.change_state(stage1_clear_state)
 
 
 

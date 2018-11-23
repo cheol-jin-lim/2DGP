@@ -42,8 +42,9 @@ class Death_blue_enemy_stage1:
 
 
     def update(self):
-        self.total_frame += Death_blue_enemy_stage1.FRAMES_PER_ACTION * Death_blue_enemy_stage1.ACTION_PER_TIME * game_framework.frame_time
-        self.frame = int(self.total_frame) % 4
+        if self.dead_enemy == True:
+            self.total_frame += Death_blue_enemy_stage1.FRAMES_PER_ACTION * Death_blue_enemy_stage1.ACTION_PER_TIME * game_framework.frame_time
+            self.frame = int(self.total_frame) % 4
 
 
         pass

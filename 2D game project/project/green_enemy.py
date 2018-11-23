@@ -30,14 +30,11 @@ class Green_enemy:
 
     def __init__(self, i):
         self.image = load_image('green_enemy_clip.png')
-        self.death_image = load_image('dead.png')
         self.x = 50+50 * i
         self.y = 500
         self.frame = 0
-        self.death_frame = 0
-        self.death_total_frame = 0.0
         self.total_frame = 0.0
-        self.death_green_enemy = 0
+        self.count = i
 
     def get_bb(self):
         return self.x - 20, self.y - 20, self.x + 20, self.y + 20
@@ -51,9 +48,8 @@ class Green_enemy:
 
     def update(self):
         self.total_frame += Green_enemy.FRAMES_PER_ACTION * Green_enemy.ACTION_PER_TIME * game_framework.frame_time
-        self.death_total_frame += Green_enemy.DEATH_FRAMES_PER_ACTION * Green_enemy.DEATH_ACTION_PER_TIME * game_framework.frame_time
         self.frame = int(self.total_frame) % 2
-        self.death_frame = int(self.death_total_frame) % 4
+
 
         pass
 

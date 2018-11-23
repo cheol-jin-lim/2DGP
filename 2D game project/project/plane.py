@@ -107,8 +107,9 @@ class Plane:
     def fire_skill_bullet(self):
         skill_bullet = Skill_bullet(self.x, self.y, self.dir * 3)
         game_world.add_object(skill_bullet, 1)
-        # skill_bullet_list.append(skill_bullet)
         bullet_list.append(skill_bullet)
+        # game_world.add_object(skill_bullet, 1)
+        # skill_bullet_list.append(skill_bullet)
         pass
 
     def add_event(self, event):
