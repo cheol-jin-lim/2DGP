@@ -62,7 +62,7 @@ stage2_score = 0
 test_dead = None
 test_dead_boss = None
 test_dead_blue_enemy3 = None
-stage_clear_wait_time = 0.0
+stage2_clear_wait_time = 0.0
 
 
 handle_enemy_count = 0
@@ -165,7 +165,7 @@ def handle_events():
     pass
 
 def update():
-    global handle_enemy_count, player_life_number, test_dead, test_dead_blue_enemy3, test_dead_boss, stage_clear_wait_time
+    global handle_enemy_count, player_life_number, test_dead, test_dead_blue_enemy3, test_dead_boss, stage2_clear_wait_time
     for game_object in game_world.all_objects():
         game_object.update()
 
@@ -296,19 +296,23 @@ def update():
         player_life.my_life = 1
 
     if handle_enemy_count == 39:   # 39마리
-        game_framework.push_state(stage_2_clear_state)
-        game_world.remove_object(plane)
-        game_world.remove_object(background)
-        game_world.remove_object(score_title)
-        game_world.remove_object(player_life)
-        game_world.remove_object(green_enemy)
-        game_world.remove_object(blue_enemy)
-        game_world.remove_object(blue_enemy2)
-        game_world.remove_object(blue_enemy4)
-        game_world.remove_object(blue_enemy5)
-        game_world.remove_object(test_dead)
-        game_world.remove_object(test_dead_boss)
-        game_world.remove_object(test_dead_blue_enemy3)
+        if stage2_clear_wait_time > 0.5:
+            game_world.remove_object(plane)
+            game_world.remove_object(background)
+            game_world.remove_object(score_title)
+            game_world.remove_object(player_life)
+            game_world.remove_object(green_enemy)
+            game_world.remove_object(blue_enemy)
+            game_world.remove_object(blue_enemy2)
+            game_world.remove_object(blue_enemy4)
+            game_world.remove_object(blue_enemy5)
+            game_world.remove_object(test_dead)
+            game_world.remove_object(test_dead_boss)
+            game_world.remove_object(test_dead_blue_enemy3)
+            game_framework.push_state(stage_2_clear_state)
+            stage2_clear_wait_time = 0
+        delay(0.01)
+        stage2_clear_wait_time += 0.01
 
 
 

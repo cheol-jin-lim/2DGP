@@ -39,7 +39,7 @@ death_blue_enemy_stage1 = []
 death_blue_enemy2_stage1 = []
 stage1_score = 0
 handle_enemy_count = 0
-
+stage1_clear_wait_time = 0.0
 
 def collide(a, b):
     left_a, bottom_a, right_a, top_a = a.get_bb()
@@ -132,7 +132,7 @@ def handle_events():
     pass
 
 def update():
-    global stage1_score,handle_enemy_count
+    global stage1_score,handle_enemy_count,stage1_clear_wait_time
     for game_object in game_world.all_objects():
         game_object.update()
 
@@ -174,17 +174,22 @@ def update():
 
 
     if handle_enemy_count == 42:   # 42마리
-        game_world.remove_object(plane)
-        game_world.remove_object(background)
-        game_world.remove_object(score_title)
-        game_world.remove_object(player_life)
-        game_world.remove_object(death_green_enemy_stage1)
-        game_world.remove_object(death_blue_enemy_stage1)
-        game_world.remove_object(death_blue_enemy2_stage1)
-        game_world.remove_object(death_green_enemy_stage1)
-        game_world.remove_object(death_blue_enemy_stage1)
-        game_world.remove_object(death_blue_enemy2_stage1)
-        game_framework.change_state(stage1_clear_state)
+        if stage1_clear_wait_time > 0.5:
+            stage1_clear_wait_time = 0
+            game_world.remove_object(plane)
+            game_world.remove_object(background)
+            game_world.remove_object(score_title)
+            game_world.remove_object(player_life)
+            game_world.remove_object(death_green_enemy_stage1)
+            game_world.remove_object(death_blue_enemy_stage1)
+            game_world.remove_object(death_blue_enemy2_stage1)
+            game_world.remove_object(death_green_enemy_stage1)
+            game_world.remove_object(death_blue_enemy_stage1)
+            game_world.remove_object(death_blue_enemy2_stage1)
+            game_framework.change_state(stage1_clear_state)
+        delay(0.01)
+        stage1_clear_wait_time += 0.01
+
 
 
 
