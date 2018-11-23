@@ -31,6 +31,8 @@ class Middle_boss_enemy:
         self.timer = 1.0
         self.frame = 0
         self.build_behavior_tree()
+        self.bgm = load_wav('enemy_accept_sound.wav')
+        self.bgm.set_volume(32)
 
     def wander(self):
         self.speed = RUN_SPEED_PPS
@@ -57,7 +59,10 @@ class Middle_boss_enemy:
 
 
     def move_to_player(self):
-        # fill here
+        self.count = 0
+        if self.count == 0:
+            self.bgm.play()
+        self.count += 1
         self.speed = RUN_SPEED_PPS
         return BehaviorTree.SUCCESS
         pass
@@ -94,10 +99,10 @@ class Middle_boss_enemy:
 
 
     def draw(self):
-        if math.cos(self.dir) < 0:
+        """if math.cos(self.dir) < 0:
             self.image.composite_draw(0, 'h', self.x, self.y)
-        else:
-            self.image.draw(self.x, self.y)
+        else:"""
+        self.image.draw(self.x, self.y)
 
         draw_rectangle(*self.get_bb())
 

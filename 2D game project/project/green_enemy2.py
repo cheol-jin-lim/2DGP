@@ -39,9 +39,9 @@ class Green_enemy2:
         self.frame = 0
         self.build_behavior_tree()
         self.death_green_enemy2 = 0
-        self.death_total_frame = 0.0
-        self.death_frame = 0
         self.death_image = load_image('dead.png')
+        self.bgm = load_wav('enemy_accept_sound.wav')
+        self.bgm.set_volume(32)
 
 
     def wander(self):
@@ -56,7 +56,6 @@ class Green_enemy2:
 
 
     def find_player(self):
-        # fill here
         plane = stage_state2.get_plane()
         distance = (plane.x - self.x)**2 + (plane.y - self.y) **2
         if distance < (PIXEL_PER_METER * 10)**2:
@@ -69,7 +68,10 @@ class Green_enemy2:
 
 
     def move_to_player(self):
-        # fill here
+        self.count = 0
+        if self.count == 0:
+            self.bgm.play()
+        self.count += 1
         self.speed = RUN_SPEED_PPS
         return BehaviorTree.SUCCESS
         pass
@@ -95,8 +97,6 @@ class Green_enemy2:
     def update(self):
         # fill here
         self.bt.run()
-        self.death_total_frame += Green_enemy2.DEATH_FRAMES_PER_ACTION * Green_enemy2.DEATH_ACTION_PER_TIME * game_framework.frame_time
-        self.death_frame = int(self.death_total_frame) % 4
         self.frame = (self.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % FRAMES_PER_ACTION
         self.x += self.speed * math.cos(self.dir) * game_framework.frame_time
         self.y += self.speed * math.sin(self.dir) * game_framework.frame_time
@@ -106,20 +106,12 @@ class Green_enemy2:
         pass
 
 
-    def draw(self):
-        if self.death_green_enemy2 == 0:
-            if math.cos(self.dir) < 0:
-                self.image.composite_draw(0, 'h', self.x, self.y)
-            else:
-                self.image.draw(self.x, self.y)
+    def draw(self): ###########################t스프라이트 구해서 clip_Draw로 방향마다 바꿔주기
+        #if math.cos(self.dir) < 0:
+                #self.image.composite_draw(0, 'h', self.x, self.y)
+        #else:
+        self.image.draw(self.x, self.y)
 
-
-        elif self.death_green_enemy2 == 1:
-            self.death_image.clip_draw(self.death_frame * 70, 0, 70, 80, self.x, self.y)
-            if self.death_frame == 3:
-                self.death_green_enemy2 = 3
-        elif self.death_green_enemy2 == 3:
-            self.death_green_enemy2 = 3
 
         draw_rectangle(*self.get_bb())
 

@@ -257,6 +257,7 @@ def update():
                 game_world.remove_object(bullet)
                 green_enemy2.remove(enemy)
                 bullet_list.remove(bullet)
+                test_dead.explosion()
                 handle_enemy_count += 1
                 main_state.stage1_score += 1000
 
@@ -274,6 +275,7 @@ def update():
                     game_world.remove_object(bullet)
                     blue_enemy3.remove(enemy)
                     bullet_list.remove(bullet)
+                    test_dead_blue_enemy3.explosion()
                     handle_enemy_count += 1
                     main_state.stage1_score += 1000
                     break
@@ -287,6 +289,7 @@ def update():
                 game_world.remove_object(bullet)
                 middle_boss_enemy.remove(enemy)
                 bullet_list.remove(bullet)
+                test_dead_boss.explosion()
                 handle_enemy_count += 1
                 main_state.stage1_score += 1000
 

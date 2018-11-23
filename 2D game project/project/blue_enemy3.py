@@ -31,6 +31,8 @@ class Blue_enemy3:
         self.timer = 1.0
         self.frame = 0
         self.build_behavior_tree()
+        self.bgm = load_wav('enemy_accept_sound.wav')
+        self.bgm.set_volume(32)
 
     def wander(self):
         self.speed = RUN_SPEED_PPS
@@ -44,7 +46,7 @@ class Blue_enemy3:
 
 
     def find_player(self):
-        # fill here
+
         plane = stage_state2.get_plane()
         distance = (plane.x - self.x)**2 + (plane.y - self.y) **2
         if distance < (PIXEL_PER_METER * 10)**2:
@@ -57,7 +59,10 @@ class Blue_enemy3:
 
 
     def move_to_player(self):
-        # fill here
+        self.count = 0
+        if self.count == 0:
+            self.bgm.play()
+        self.count += 1
         self.speed = RUN_SPEED_PPS
         return BehaviorTree.SUCCESS
         pass
