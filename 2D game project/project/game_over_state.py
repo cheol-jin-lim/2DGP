@@ -8,11 +8,14 @@ name = "game_over_state"
 image = None
 logo_time = 0.0
 font = None
-
+bgm = None
 def enter():
-    global image, font
+    global image, font, bgm
     image = load_image('end.png')
     font = load_font('ENCR10B.TTF', 40)
+    bgm = load_wav('game_over_sound.wav')
+    bgm.set_volume(256)
+    bgm.play()
     pass
 
 
