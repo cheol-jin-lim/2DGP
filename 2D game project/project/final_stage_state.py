@@ -4,6 +4,7 @@ import os
 from pico2d import *
 import game_framework
 import game_world
+import pause_state2
 import game_over_state
 from background import Background
 from score_title import Score_title
@@ -98,9 +99,7 @@ def handle_events():
         if event.type == SDL_QUIT:
             game_framework.quit()
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
-            game_framework.quit()
-        elif event.type == SDL_KEYDOWN and event.key == SDLK_p:
-            """game_framework.push_state(main_state)"""
+            game_framework.push_state(pause_state2)
         else:
             plane.handle_event(event)
 
@@ -139,8 +138,11 @@ def update():
             game_world.add_object(death_plane_final_boss, 1)
             death_plane_final_boss.dead_plane = True
             death_plane_final_boss.explosion()
+            game_framework.change_state(game_over_state)
 
-    # if final_boss.hp == 0:
+    # if final_boss.hp == 0:  # 최종클리어 화면
+
+
 
 
 
