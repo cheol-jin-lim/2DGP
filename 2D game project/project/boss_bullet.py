@@ -9,7 +9,7 @@ class Boss_bullet:
 
     def __init__(self, i):
         if Boss_bullet.image == None:
-            Boss_bullet.image = load_image('boss_bullet.png')
+            Boss_bullet.image = load_image('boss_enemy_bullet.png')
         self.x = 50 + 40 * i
         self.y = 500
         self.velocity = random.randint(1, 5)
@@ -32,16 +32,17 @@ class Boss_bullet:
     def update(self):
         self.y -= self.velocity
         self.x = clamp(50, self.x, 800 - 50)
-        self.y = clamp(10, self.y, 600 - 50)
-        if self.y < 25 or self.y > 600 - 25:
+        self.y = clamp(30, self.y, 600 - 50)
+        if self.y < 50 or self.y > 600 - 25:
             final_stage_state.boss_bullet_count += 1
-
             game_world.remove_object(self)
+            final_stage_state.boss_bullet.remove(self)
             if final_stage_state.boss_bullet_count == 20:
-                final_stage_state.boss_bullet.clear()
-                final_stage_state.boss_bullet = [Boss_bullet(i) for i in range(20)]
-                game_world.add_objects(final_stage_state.boss_bullet, 1)
-                final_stage_state.boss_bullet_count = 0
+                if final_stage_state.final_boss.hp > 0:
+                    final_stage_state.boss_bullet.clear()
+                    final_stage_state.boss_bullet = [Boss_bullet(i) for i in range(20)]
+                    game_world.add_objects(final_stage_state.boss_bullet, 1)
+                    final_stage_state.boss_bullet_count = 0
 
 
 

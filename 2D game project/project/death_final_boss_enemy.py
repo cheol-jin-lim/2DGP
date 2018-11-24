@@ -43,14 +43,12 @@ class Dead_effect:
     def explosion(self):
         self.explosion_sound.play()
 
-
-
     def get_bb(self):
         return self.x - 20, self.y - 20, self.x + 20, self.y + 20
 
 
     def update(self):
-        self.total_frame += 15 * Dead_effect.FRAMES_PER_ACTION * Dead_effect.ACTION_PER_TIME * game_framework.frame_time
+        self.total_frame += 5 * Dead_effect.FRAMES_PER_ACTION * Dead_effect.ACTION_PER_TIME * game_framework.frame_time
         self.frame = int(self.total_frame) % 4
 
 

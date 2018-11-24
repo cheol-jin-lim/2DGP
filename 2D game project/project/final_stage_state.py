@@ -14,6 +14,8 @@ from final_boss import Boss_enemy
 import main_state
 from boss_bullet import Boss_bullet
 from boss_hp_bar import Boss_hp_bar
+from death_final_boss_enemy import Dead_effect
+from death_plane import Death_plane
 name = "final_stage_state"
 
 
@@ -27,10 +29,10 @@ skill_bullet = None
 final_boss = None
 boss_bullet = None
 boss_hp_bar = None
-
+test_dead_boss = None
 player_life_number = 1
 boss_bullet_count = 0
-
+death_plane_final_boss = None
 
 handle_enemy_count = 0
 # i = random.randint(20, 70)
@@ -59,7 +61,7 @@ def get_plane():
 
 
 def enter():
-    global background, score_title, player_life, plane, my_bullet, final_boss, boss_bullet, my_bullet,boss_hp_bar
+    global background, score_title, player_life, plane, my_bullet, final_boss, boss_bullet, my_bullet,boss_hp_bar,death_plane_final_boss
     background = Background()
     score_title = Score_title()
     player_life = Player_life()
@@ -113,7 +115,7 @@ def handle_events():
     pass
 
 def update():
-    global boss_bullet_count, boss_bullet, final_boss
+    global boss_bullet_count, boss_bullet, final_boss, test_dead_boss
     for game_object in game_world.all_objects():
         game_object.update()
 
@@ -125,6 +127,26 @@ def update():
             print(final_boss.hp)
             if final_boss.hp == 0:
                 game_world.remove_object(final_boss)
+                test_dead_boss = Dead_effect(final_boss.x, final_boss.y)
+                game_world.add_object(test_dead_boss, 1)
+                test_dead_boss.explosion()
+                main_state.stage1_score += 10000
+
+    for bullet in boss_bullet:
+        if collide(bullet, plane):
+            game_world.remove_object(plane)
+            death_plane_final_boss = Death_plane(plane.x, plane.y)
+            game_world.add_object(death_plane_final_boss, 1)
+            death_plane_final_boss.dead_plane = True
+            death_plane_final_boss.explosion()
+
+    # if final_boss.hp == 0:
+
+
+
+
+
+
 
 
 
