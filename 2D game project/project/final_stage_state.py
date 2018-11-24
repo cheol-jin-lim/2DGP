@@ -12,7 +12,7 @@ from plane import *
 from player_life import Player_life
 from final_boss import Boss_enemy
 import main_state
-
+from boss_bullet import Boss_bullet
 name = "final_stage_state"
 
 
@@ -24,12 +24,15 @@ my_bullet = None
 font = None
 skill_bullet = None
 final_boss = None
+boss_bullet = None
 
-player_life_number = 2
-
+player_life_number = 1
+boss_bullet_count = 0
 
 
 handle_enemy_count = 0
+i = random.randint(20, 70)
+
 def collide(a, b):
     left_a, bottom_a, right_a, top_a = a.get_bb()
     left_b, bottom_b, right_b, top_b = b.get_bb()
@@ -53,17 +56,19 @@ def get_plane():
 
 
 def enter():
-    global background, score_title, player_life, plane, my_bullet, final_boss
+    global background, score_title, player_life, plane, my_bullet, final_boss, boss_bullet,i
     background = Background()
     score_title = Score_title()
     player_life = Player_life()
     plane = Plane()
     final_boss = Boss_enemy()
+    boss_bullet = [Boss_bullet(i) for i in range(20)]
     game_world.add_object(background, 0)
     game_world.add_object(score_title, 1)
     game_world.add_object(player_life, 1)
     game_world.add_object(plane, 1)
     game_world.add_object(final_boss, 1)
+    game_world.add_objects(boss_bullet, 1)
 
 
 def exit():
@@ -93,6 +98,8 @@ def handle_events():
 
     if player_life_number == 0:
         game_framework.change_state(game_over_state)
+
+
 
 
 

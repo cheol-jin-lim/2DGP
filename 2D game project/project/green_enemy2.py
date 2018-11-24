@@ -38,7 +38,7 @@ class Green_enemy2:
         self.timer = 1.0
         self.frame = 0
         self.build_behavior_tree()
-        self.death_green_enemy2 = 0
+        self.count = 0
         self.death_image = load_image('dead.png')
         self.bgm = load_wav('enemy_accept_sound.wav')
         self.bgm.set_volume(32)
@@ -68,7 +68,6 @@ class Green_enemy2:
 
 
     def move_to_player(self):
-        self.count = 0
         if self.count == 0:
             self.bgm.play()
         self.count += 1

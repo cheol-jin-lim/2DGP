@@ -31,8 +31,10 @@ class Blue_enemy3:
         self.timer = 1.0
         self.frame = 0
         self.build_behavior_tree()
+        self.count = 0
         self.bgm = load_wav('enemy_accept_sound.wav')
         self.bgm.set_volume(32)
+
 
     def wander(self):
         self.speed = RUN_SPEED_PPS
@@ -59,7 +61,6 @@ class Blue_enemy3:
 
 
     def move_to_player(self):
-        self.count = 0
         if self.count == 0:
             self.bgm.play()
         self.count += 1
