@@ -6,6 +6,7 @@ import game_framework
 import game_world
 import pause_state2
 import game_over_state
+import all_stage_clear_state
 from background import Background
 from score_title import Score_title
 from my_bullet import My_bullet
@@ -140,7 +141,8 @@ def update():
             death_plane_final_boss.explosion()
             game_framework.change_state(game_over_state)
 
-    # if final_boss.hp == 0:  # 최종클리어 화면
+    if final_boss.hp == 0:
+        game_framework.change_state(all_stage_clear_state)
 
 
 
