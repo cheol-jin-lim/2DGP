@@ -94,16 +94,17 @@ class Blue_enemy3:
         self.x += self.speed * math.cos(self.dir) * game_framework.frame_time
         self.y += self.speed * math.sin(self.dir) * game_framework.frame_time
 
-        self.x = clamp(50, self.x, 700 - 50)
-        self.y = clamp(80, self.y, 500 - 50)
+        if self.y < 350:
+            self.x = clamp(50, self.x, 800 - 50)
+            self.y = clamp(80, self.y, 500 - 50)
+        else:
+            self.x = clamp(300, self.x, 700 - 250)
+            self.y = clamp(80, self.y, 500 - 50)
         pass
 
 
     def draw(self):
-        if math.cos(self.dir) < 0:
-            self.image.composite_draw(0, 'h', self.x, self.y)
-        else:
-            self.image.draw(self.x, self.y)
+        self.image.draw(self.x, self.y)
 
         draw_rectangle(*self.get_bb())
 

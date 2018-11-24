@@ -173,7 +173,6 @@ def update():
 
 
 
-
     if handle_enemy_count == 42:   # 42마리
         if stage1_clear_wait_time > 0.5:
             stage1_clear_wait_time = 0

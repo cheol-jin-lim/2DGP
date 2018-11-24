@@ -12,7 +12,7 @@ class Boss_bullet:
             Boss_bullet.image = load_image('boss_enemy_bullet.png')
         self.x = 50 + 40 * i
         self.y = 500
-        self.velocity = random.randint(1, 5)
+        self.velocity = random.randint(3, 6)
 
 
 

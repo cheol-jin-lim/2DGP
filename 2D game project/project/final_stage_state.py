@@ -123,6 +123,8 @@ def update():
         if collide(bullet, final_boss):
             game_world.remove_object(bullet)
             bullet_list.remove(bullet)
+            if bullet == Skill_bullet():
+                final_boss.hp -= 3
             final_boss.hp -= 1
             print(final_boss.hp)
             if final_boss.hp == 0:

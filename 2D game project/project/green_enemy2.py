@@ -100,15 +100,17 @@ class Green_enemy2:
         self.x += self.speed * math.cos(self.dir) * game_framework.frame_time
         self.y += self.speed * math.sin(self.dir) * game_framework.frame_time
 
-        self.x = clamp(50, self.x, 700 - 50)
-        self.y = clamp(80, self.y, 500 - 50)
+        if self.y < 350:
+            self.x = clamp(50, self.x, 800 - 50)
+            self.y = clamp(80, self.y, 500 - 50)
+        else:
+            self.x = clamp(300, self.x, 700 - 250)
+            self.y = clamp(80, self.y, 500 - 50)
+
         pass
 
 
-    def draw(self): ###########################t스프라이트 구해서 clip_Draw로 방향마다 바꿔주기
-        #if math.cos(self.dir) < 0:
-                #self.image.composite_draw(0, 'h', self.x, self.y)
-        #else:
+    def draw(self):
         self.image.draw(self.x, self.y)
 
 

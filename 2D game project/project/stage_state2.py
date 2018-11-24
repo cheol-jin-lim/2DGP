@@ -294,7 +294,7 @@ def update():
 
     for enemy in middle_boss_enemy:
         if collide(enemy, plane):
-            # player_life_number -= 1
+            player_life_number -= 1
             death_plane_boss = Death_plane(plane.x, plane.y)
             game_world.add_object(death_plane_boss, 1)
             game_world.remove_object(plane)
