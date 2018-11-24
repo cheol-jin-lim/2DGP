@@ -13,6 +13,7 @@ from player_life import Player_life
 from final_boss import Boss_enemy
 import main_state
 from boss_bullet import Boss_bullet
+from boss_hp_bar import Boss_hp_bar
 name = "final_stage_state"
 
 
@@ -25,6 +26,7 @@ font = None
 skill_bullet = None
 final_boss = None
 boss_bullet = None
+boss_hp_bar = None
 
 player_life_number = 1
 boss_bullet_count = 0
@@ -57,17 +59,19 @@ def get_plane():
 
 
 def enter():
-    global background, score_title, player_life, plane, my_bullet, final_boss, boss_bullet, my_bullet
+    global background, score_title, player_life, plane, my_bullet, final_boss, boss_bullet, my_bullet,boss_hp_bar
     background = Background()
     score_title = Score_title()
     player_life = Player_life()
     plane = Plane()
     final_boss = Boss_enemy()
+    boss_hp_bar = Boss_hp_bar()
     my_bullet = bullet_list
     boss_bullet = [Boss_bullet(i) for i in range(20)]
     game_world.add_object(background, 0)
     game_world.add_object(score_title, 1)
     game_world.add_object(player_life, 1)
+    game_world.add_object(boss_hp_bar, 1)
     game_world.add_object(plane, 1)
     game_world.add_object(final_boss, 1)
     game_world.add_objects(boss_bullet, 1)
@@ -123,7 +127,7 @@ def update():
                 game_world.remove_object(final_boss)
 
 
-    
+
 
 
 
