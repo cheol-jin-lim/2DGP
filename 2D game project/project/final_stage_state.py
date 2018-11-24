@@ -31,7 +31,8 @@ boss_bullet_count = 0
 
 
 handle_enemy_count = 0
-i = random.randint(20, 70)
+# i = random.randint(20, 70)
+
 
 def collide(a, b):
     left_a, bottom_a, right_a, top_a = a.get_bb()
@@ -56,12 +57,13 @@ def get_plane():
 
 
 def enter():
-    global background, score_title, player_life, plane, my_bullet, final_boss, boss_bullet,i
+    global background, score_title, player_life, plane, my_bullet, final_boss, boss_bullet, my_bullet
     background = Background()
     score_title = Score_title()
     player_life = Player_life()
     plane = Plane()
     final_boss = Boss_enemy()
+    my_bullet = bullet_list
     boss_bullet = [Boss_bullet(i) for i in range(20)]
     game_world.add_object(background, 0)
     game_world.add_object(score_title, 1)
@@ -107,8 +109,27 @@ def handle_events():
     pass
 
 def update():
+    global boss_bullet_count, boss_bullet, final_boss
     for game_object in game_world.all_objects():
         game_object.update()
+
+    for bullet in bullet_list:
+        if collide(bullet, final_boss):
+            game_world.remove_object(bullet)
+            bullet_list.remove(bullet)
+            final_boss.hp -= 1
+            print(final_boss.hp)
+            if final_boss.hp == 0:
+                game_world.remove_object(final_boss)
+
+
+    
+
+
+
+
+
+
 
 
 def draw():

@@ -190,6 +190,7 @@ def update():
             game_world.remove_object(death_blue_enemy_stage1)
             game_world.remove_object(death_blue_enemy2_stage1)
             game_framework.change_state(stage1_clear_state)
+            bullet_list.clear()
         delay(0.01)
         stage1_clear_wait_time += 0.01
 

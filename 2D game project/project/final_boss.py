@@ -38,6 +38,7 @@ class Boss_enemy:
         self.death_boss_enemy = 0
         self.speed = 0
         self.dir = random.random() * 2 * math.pi
+        self.hp = 50
 
     def get_bb(self):
         return self.x - 140, self.y - 50, self.x + 140, self.y + 50
@@ -102,8 +103,8 @@ class Boss_enemy:
         self.x += self.speed * math.cos(self.dir) * game_framework.frame_time
         self.y += self.speed * math.sin(self.dir) * game_framework.frame_time
 
-        self.x = clamp(50, self.x, 700 - 50)
-        self.y = clamp(80, self.y, 500 - 50)
+        self.x = clamp(100, self.x, 700 - 50)
+        self.y = clamp(200, self.y, 500 - 50)
 
 
         pass
