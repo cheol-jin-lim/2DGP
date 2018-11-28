@@ -123,11 +123,22 @@ def update():
         if collide(bullet, final_boss):
             game_world.remove_object(bullet)
             bullet_list.remove(bullet)
-            if bullet == Skill_bullet():
-                final_boss.hp -= 3
             final_boss.hp -= 1
             print(final_boss.hp)
-            if final_boss.hp == 0:
+            if final_boss.hp < 0:
+                game_world.remove_object(final_boss)
+                test_dead_boss = Dead_effect(final_boss.x, final_boss.y)
+                game_world.add_object(test_dead_boss, 1)
+                test_dead_boss.explosion()
+                main_state.stage1_score += 10000
+
+    for bullet in skill_bullet_list:
+        if collide(bullet, final_boss):
+            game_world.remove_object(bullet)
+            skill_bullet_list.remove(bullet)
+            final_boss.hp -= 5
+            print(final_boss.hp)
+            if final_boss.hp < 0:
                 game_world.remove_object(final_boss)
                 test_dead_boss = Dead_effect(final_boss.x, final_boss.y)
                 game_world.add_object(test_dead_boss, 1)
@@ -143,7 +154,7 @@ def update():
             death_plane_final_boss.explosion()
             game_framework.change_state(game_over_state)
 
-    if final_boss.hp == 0:
+    if final_boss.hp < 0:
         game_framework.change_state(all_stage_clear_state)
 
 

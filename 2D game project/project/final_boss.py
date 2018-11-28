@@ -113,7 +113,7 @@ class Boss_enemy:
     def draw(self):
         if self.death_boss_enemy == 0:
             self.image.draw(self.x, self.y)# self.image.clip_draw(self.frame * 50, 0, 50, 100, self.x, self.y)
-        draw_rectangle(*self.get_bb())
+        # draw_rectangle(*self.get_bb())
 
 
 

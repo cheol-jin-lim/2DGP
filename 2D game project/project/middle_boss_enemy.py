@@ -105,7 +105,7 @@ class Middle_boss_enemy:
     def draw(self):
         self.image.draw(self.x, self.y)
 
-        draw_rectangle(*self.get_bb())
+        # draw_rectangle(*self.get_bb())
 
     def handle_event(self, event):
         pass

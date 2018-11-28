@@ -57,7 +57,7 @@ class Red_enemy:
 
     def draw(self):
         self.image.clip_draw(self.frame * 50, 0, 50 ,100, self.x, self.y)
-        draw_rectangle(*self.get_bb())
+        # draw_rectangle(*self.get_bb())
 
 
 

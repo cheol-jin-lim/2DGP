@@ -147,6 +147,7 @@ def update():
                 stage1_score += 100
                 handle_enemy_count += 1
 
+
     for enemy in blue_enemy:
         for bullet in bullet_list:
             if collide(enemy, bullet):
@@ -159,6 +160,7 @@ def update():
                 stage1_score += 100
                 handle_enemy_count += 1
 
+
     for enemy in blue_enemy2:
         for bullet in bullet_list:
             if collide(enemy, bullet):
@@ -168,6 +170,42 @@ def update():
                 game_world.remove_object(bullet)
                 death_blue_enemy2_stage1[enemy.count].dead_enemy = True
                 death_blue_enemy2_stage1[enemy.count].explosion()
+                stage1_score += 100
+                handle_enemy_count += 1
+
+    for enemy in green_enemy:
+        for bullet in skill_bullet_list:
+            if collide(enemy, bullet):
+                green_enemy.remove(enemy)
+                # skill_bullet_list.remove(bullet)
+                game_world.remove_object(enemy)
+                # game_world.remove_object(bullet)
+                death_green_enemy_stage1[enemy.count].dead_enemy = True
+                death_green_enemy_stage1[enemy.count].explosion()
+                stage1_score += 100
+                handle_enemy_count += 1
+
+    for enemy in blue_enemy:
+        for bullet in skill_bullet_list:
+            if collide(enemy, bullet):
+                blue_enemy.remove(enemy)
+                # skill_bullet_list.remove(bullet)
+                game_world.remove_object(enemy)
+                # game_world.remove_object(bullet)
+                death_blue_enemy_stage1[enemy.count].dead_enemy = True
+                death_blue_enemy_stage1[enemy.count].explosion()
+                stage1_score += 100
+                handle_enemy_count += 1
+
+    for enemy in blue_enemy2:
+        for bullet in skill_bullet_list:
+            if collide(enemy, bullet):
+                blue_enemy2.remove(enemy)
+                # skill_bullet_list.remove(bullet)
+                game_world.remove_object(enemy)
+                # game_world.remove_object(bullet)
+                death_blue_enemy_stage1[enemy.count].dead_enemy = True
+                death_blue_enemy_stage1[enemy.count].explosion()
                 stage1_score += 100
                 handle_enemy_count += 1
 
@@ -189,6 +227,7 @@ def update():
             game_world.remove_object(death_blue_enemy2_stage1)
             game_framework.change_state(stage1_clear_state)
             bullet_list.clear()
+            skill_bullet_list.clear()
         delay(0.01)
         stage1_clear_wait_time += 0.01
 

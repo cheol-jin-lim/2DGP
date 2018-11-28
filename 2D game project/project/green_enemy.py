@@ -60,7 +60,7 @@ class Green_enemy:
 
 
 
-        draw_rectangle(*self.get_bb())
+        # draw_rectangle(*self.get_bb())
 
 
 

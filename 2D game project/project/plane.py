@@ -116,7 +116,7 @@ class Plane:
     def fire_skill_bullet(self):
         skill_bullet = Skill_bullet(self.x, self.y, self.dir * 3)
         game_world.add_object(skill_bullet, 1)
-        bullet_list.append(skill_bullet)
+        skill_bullet_list.append(skill_bullet)
         Plane.skill_shoot(self)
         pass
 
@@ -141,7 +141,7 @@ class Plane:
         self.cur_state.draw(self)
         self.font.draw(620, 20,'[basic bullet: %d]' % self.bullet_count,(100, 255, 0))
         self.font.draw(620, 40, '[Skill bullet: %d]' % self.skill_bullet_count, (100, 255, 0))
-        draw_rectangle(*self.get_bb())
+        # draw_rectangle(*self.get_bb())
 
 
 
