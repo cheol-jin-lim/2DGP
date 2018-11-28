@@ -3,6 +3,7 @@ from my_bullet import My_bullet
 from my_bullet import Skill_bullet
 import game_world
 import game_framework
+import main_state
 
 
 RIGHT_DOWN, LEFT_DOWN, RIGHT_UP, LEFT_UP,BULLET_A,SKILL_S = range(6)

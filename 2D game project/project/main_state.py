@@ -41,6 +41,7 @@ stage1_score = 0
 handle_enemy_count = 0
 stage1_clear_wait_time = 0.0
 
+
 def collide(a, b):
     left_a, bottom_a, right_a, top_a = a.get_bb()
     left_b, bottom_b, right_b, top_b = b.get_bb()

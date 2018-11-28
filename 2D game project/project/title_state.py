@@ -25,6 +25,7 @@ def exit():
 import main_state
 
 def handle_events():
+    global bgm
     events = get_events()
     for event in events:
         if event.type == SDL_QUIT:
@@ -34,6 +35,7 @@ def handle_events():
                 game_framework.quit()
             elif(event.type, event.key) == (SDL_KEYDOWN, SDLK_SPACE):
                 game_framework.push_state(main_state)
+                bgm.set_volume(0)
     pass
 
 
