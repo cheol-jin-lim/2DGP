@@ -21,7 +21,7 @@ class Blue_enemy3:
 
     def load_image(self):
         if Blue_enemy3.image == None:
-            Blue_enemy3.image = load_image('test_blue_enemy3.png')
+            Blue_enemy3.image = load_image('images/test_blue_enemy3.png')
 
     def __init__(self, i):
         self.x, self.y = 350 + 50 * i, 500
@@ -32,7 +32,7 @@ class Blue_enemy3:
         self.frame = 0
         self.build_behavior_tree()
         self.count = 0
-        self.bgm = load_wav('enemy_accept_sound.wav')
+        self.bgm = load_wav('sounds/enemy_accept_sound.wav')
         self.bgm.set_volume(32)
 
 
@@ -69,10 +69,7 @@ class Blue_enemy3:
         pass
 
     def build_behavior_tree(self):
-        # fill here
         wander_node = LeafNode("Wander", self.wander)  # wander code
-        # self.bt = BehaviorTree(wander_node)
-
         find_player_node = LeafNode("Find Player", self.find_player)
         move_to_player_node = LeafNode("Move to Player", self.move_to_player)
         chase_node = SequenceNode("Chase")
@@ -87,9 +84,7 @@ class Blue_enemy3:
         return self.x - 20, self.y - 20, self.x + 20, self.y + 20
 
     def update(self):
-        # fill here
         self.bt.run()
-
         self.frame = (self.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % FRAMES_PER_ACTION
         self.x += self.speed * math.cos(self.dir) * game_framework.frame_time
         self.y += self.speed * math.sin(self.dir) * game_framework.frame_time
@@ -106,7 +101,7 @@ class Blue_enemy3:
     def draw(self):
         self.image.draw(self.x, self.y)
 
-        # draw_rectangle(*self.get_bb())
+
 
     def handle_event(self, event):
         pass

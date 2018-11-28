@@ -11,7 +11,7 @@ name = "Pause_state"
 
 def enter():
     global image
-    image = load_image('pause_image.png')
+    image = load_image('images/pause_image.png')
     pass
 
 

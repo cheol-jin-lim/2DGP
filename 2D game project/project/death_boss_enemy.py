@@ -31,13 +31,13 @@ class Dead_effect:
 
 
     def __init__(self, x, y):
-        self.image = load_image('dead.png')
+        self.image = load_image('images/dead.png')
         self.x = x
         self.y = y
         self.frame = 0
         self.total_frame = 0.0
         self.dead_enemy = False
-        self.explosion_sound = load_wav('exposion_sound.wav')
+        self.explosion_sound = load_wav('sounds/explosion_sound.wav')
         self.explosion_sound.set_volume(32)
 
     def explosion(self):

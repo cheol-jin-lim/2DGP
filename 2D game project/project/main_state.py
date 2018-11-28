@@ -46,7 +46,7 @@ def collide(a, b):
     left_a, bottom_a, right_a, top_a = a.get_bb()
     left_b, bottom_b, right_b, top_b = b.get_bb()
 
-    # print(left_b,bottom_b,right_b,top_b)
+
     if left_a > right_b:  # 충돌이 없는경우
         return False
     if right_a < left_b:  # 충돌이 없는경우
@@ -177,9 +177,7 @@ def update():
         for bullet in skill_bullet_list:
             if collide(enemy, bullet):
                 green_enemy.remove(enemy)
-                # skill_bullet_list.remove(bullet)
                 game_world.remove_object(enemy)
-                # game_world.remove_object(bullet)
                 death_green_enemy_stage1[enemy.count].dead_enemy = True
                 death_green_enemy_stage1[enemy.count].explosion()
                 stage1_score += 100
@@ -189,9 +187,7 @@ def update():
         for bullet in skill_bullet_list:
             if collide(enemy, bullet):
                 blue_enemy.remove(enemy)
-                # skill_bullet_list.remove(bullet)
                 game_world.remove_object(enemy)
-                # game_world.remove_object(bullet)
                 death_blue_enemy_stage1[enemy.count].dead_enemy = True
                 death_blue_enemy_stage1[enemy.count].explosion()
                 stage1_score += 100
@@ -201,9 +197,7 @@ def update():
         for bullet in skill_bullet_list:
             if collide(enemy, bullet):
                 blue_enemy2.remove(enemy)
-                # skill_bullet_list.remove(bullet)
                 game_world.remove_object(enemy)
-                # game_world.remove_object(bullet)
                 death_blue_enemy_stage1[enemy.count].dead_enemy = True
                 death_blue_enemy_stage1[enemy.count].explosion()
                 stage1_score += 100

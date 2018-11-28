@@ -37,14 +37,14 @@ boss_bullet_count = 0
 death_plane_final_boss = None
 
 handle_enemy_count = 0
-# i = random.randint(20, 70)
+
 
 
 def collide(a, b):
     left_a, bottom_a, right_a, top_a = a.get_bb()
     left_b, bottom_b, right_b, top_b = b.get_bb()
 
-    # print(left_b,bottom_b,right_b,top_b)
+
     if left_a > right_b:  # 충돌이 없는경우
         return False
     if right_a < left_b:  # 충돌이 없는경우

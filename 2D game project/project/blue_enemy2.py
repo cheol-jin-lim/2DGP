@@ -29,8 +29,7 @@ class Blue_enemy2:
 
 
     def __init__(self, i):
-        Blue_enemy2.image = load_image('Blue_enemy_clip2.png')
-        self.death_image = load_image('dead.png')
+        Blue_enemy2.image = load_image('images/Blue_enemy_clip2.png')
         self.x = 50+50 * i
         self.y = 400
         self.frame = 0
@@ -42,7 +41,6 @@ class Blue_enemy2:
 
 
     def get_bb(self):
-        # fill here
         return self.x - 20, self.y - 20, self.x+20, self.y + 20
 
 
@@ -50,7 +48,6 @@ class Blue_enemy2:
 
     def update(self):
         self.total_frame += Blue_enemy2.FRAMES_PER_ACTION * Blue_enemy2.ACTION_PER_TIME * game_framework.frame_time
-
         self.frame = int(self.total_frame) % 2
 
 
@@ -61,7 +58,7 @@ class Blue_enemy2:
 
         self.image.clip_draw(self.frame * 50, 0, 50, 100, self.x, self.y)
 
-        # draw_rectangle(*self.get_bb())
+
 
 
 

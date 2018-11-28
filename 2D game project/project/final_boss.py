@@ -25,17 +25,13 @@ class Boss_enemy:
 
 
     def __init__(self):
-        Boss_enemy.image = load_image('final_boss_enemy.png')
-        self.death_image = load_image('dead.png')
+        Boss_enemy.image = load_image('images/final_boss_enemy.png')
         self.x = random.randint(200, 600)
         self.y = random.randint(200, 500)
         self.frame = 0
         self.timer = 1.0
         self.total_frame = 0.0
         self.build_behavior_tree()
-        self.death_frame = 0
-        self.death_total_frame = 0.0
-        self.death_boss_enemy = 0
         self.speed = 0
         self.dir = random.random() * 2 * math.pi
         self.hp = 50
@@ -81,10 +77,8 @@ class Boss_enemy:
         # self.bt = BehaviorTree(wander_node)
 
         find_player_node = LeafNode("Find Player", self.find_player)
-        # move_to_player_node = LeafNode("Move to Player", self.move_to_player)
         chase_node = SequenceNode("Chase")
         shoot_bullet_node =LeafNode("shoot bullet", self.shoot_bullet)
-        # chase_node.add_children(shoot_bullet_node) # chase_node에 미사일 발사 추가하기
         wander_chase_node = SelectorNode("WanderChase")
         wander_chase_node.add_children(wander_node)
         self.bt = BehaviorTree(wander_chase_node)
@@ -111,9 +105,7 @@ class Boss_enemy:
 
 
     def draw(self):
-        if self.death_boss_enemy == 0:
-            self.image.draw(self.x, self.y)# self.image.clip_draw(self.frame * 50, 0, 50, 100, self.x, self.y)
-        # draw_rectangle(*self.get_bb())
+        self.image.draw(self.x, self.y)
 
 
 

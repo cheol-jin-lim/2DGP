@@ -29,8 +29,7 @@ class Blue_enemy4:
 
 
     def __init__(self, i):
-        self.image = load_image('blue_enemy4.png')
-        self.death_image = load_image('dead.png')
+        self.image = load_image('images/blue_enemy4.png')
         self.x = 500+50 * i
         self.y = 400
         self.frame = 0
@@ -58,7 +57,7 @@ class Blue_enemy4:
     def draw(self):
 
         self.image.clip_draw(self.frame * 25, 0, 25 ,30, self.x, self.y)
-        # draw_rectangle(*self.get_bb())
+
 
 
 

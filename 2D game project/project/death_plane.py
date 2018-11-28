@@ -25,14 +25,14 @@ class Death_plane:
 
 
     def __init__(self, x, y):
-        self.image = load_image('test_plane_exposion.png')
+        self.image = load_image('images/test_plane_explosion.png')
         self.dead_plane = False
         self.x = x
         self.y = y
         self.frame = 0
         self.total_frame = 0.0
 
-        self.explosion_sound = load_wav('explosion_sound.wav')
+        self.explosion_sound = load_wav('sounds/explosion_sound.wav')
         self.explosion_sound.set_volume(32)
 
     def explosion(self):

@@ -11,9 +11,9 @@ font = None
 bgm = None
 def enter():
     global image, font, bgm
-    image = load_image('end.png')
+    image = load_image('images/end.png')
     font = load_font('ENCR10B.TTF', 40)
-    bgm = load_wav('game_over_sound.wav')
+    bgm = load_wav('sounds/game_over_sound.wav')
     bgm.set_volume(256)
     bgm.play()
     pass
@@ -29,7 +29,6 @@ def update():
 
     if(logo_time > 0.5):
         logo_time = 0
-        # game_framework.quit()
         game_framework.quit()
     delay(0.01)
     logo_time += 0.0025

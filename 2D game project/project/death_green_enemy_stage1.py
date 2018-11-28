@@ -25,7 +25,7 @@ class Death_green_enemy_stage1:
 
 
     def __init__(self, i):
-        self.image = load_image('dead.png')
+        self.image = load_image('images/dead.png')
         self.dead_enemy = False
         self.dead_enemy2 = False
         self.x = 50+50 * i
@@ -33,7 +33,7 @@ class Death_green_enemy_stage1:
         self.frame = 0
         self.total_frame = 0.0
 
-        self.explosion_sound = load_wav('explosion_sound.wav')
+        self.explosion_sound = load_wav('sounds/explosion_sound.wav')
         self.explosion_sound.set_volume(32)
 
     def explosion(self):

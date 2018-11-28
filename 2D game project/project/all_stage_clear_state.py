@@ -9,9 +9,9 @@ font = None
 bgm = None
 def enter():
     global image, font, bgm
-    image = load_image('all_state_clear.png')
+    image = load_image('images/all_state_clear.png')
     font = load_font('ENCR10B.TTF', 30)
-    bgm = load_wav('all_stage_clear_bgm.wav')
+    bgm = load_wav('sounds/all_stage_clear_bgm.wav')
     bgm.set_volume(256)
     bgm.play()
     pass

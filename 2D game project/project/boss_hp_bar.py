@@ -4,7 +4,7 @@ from pico2d import *
 
 class Boss_hp_bar:
     def __init__(self):
-        self.image = load_image('hp_bar.png')
+        self.image = load_image('images/hp_bar.png')
 
 
     def update(self):

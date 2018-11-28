@@ -1,7 +1,6 @@
 import game_framework
 from pico2d import *
 import stage_state2
-# from green_enemy import Green_enemy
 import game_world
 import death_green_enemy_stage1
 import death_blue_enemy_stage1
@@ -13,8 +12,8 @@ bgm = None
 
 def enter():
     global image, bgm
-    image = load_image('stage_clear_image.png')
-    bgm = load_wav('stage_clear_sound.wav')
+    image = load_image('images/stage_clear_image.png')
+    bgm = load_wav('sounds/stage_clear_sound.wav')
     bgm.set_volume(64)
     bgm.play()
     pass
@@ -31,7 +30,6 @@ def update():
 
     if(logo_time > 0.5):
         logo_time = 0
-        # game_framework.quit()
         game_framework.change_state(stage_state2)
     delay(0.01)
     logo_time += 0.0025

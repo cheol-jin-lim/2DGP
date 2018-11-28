@@ -7,10 +7,10 @@ class My_bullet:
 
     def __init__(self, x = 400, y = 300, velocity = 1):
         if My_bullet.image == None:
-            My_bullet.image = load_image('my_bullet.png')
+            My_bullet.image = load_image('images/my_bullet.png')
         self.x, self.y, self.velocity = x, y, velocity
 
-        self.collide_sound = load_wav('pickup.wav')
+        self.collide_sound = load_wav('sounds/pickup.wav')
         self.collide_sound.set_volume(32)
 
 
@@ -41,7 +41,7 @@ class Skill_bullet:
 
     def __init__(self, x = 400, y = 300, velocity = 1):
         if Skill_bullet.image == None:
-            Skill_bullet.image = load_image('skill_bullet.png')
+            Skill_bullet.image = load_image('images/skill_bullet.png')
         self.x, self.y, self.velocity = x, y, velocity
         self.frame = 1
 
@@ -49,8 +49,8 @@ class Skill_bullet:
         return self.x-60, self.y -110, self.x+60, self.y + 110
 
     def draw(self):
-        self.image.draw(self.x, self.y) # (self.frame * 27, 0, 400, 75, self.x ,self.y)
-        # draw_rectangle(*self.get_bb())
+        self.image.draw(self.x, self.y)
+
 
     def update(self):
         self.y += self.velocity * 5

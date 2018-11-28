@@ -85,7 +85,7 @@ class Plane:
 
     def __init__(self):
         self.x, self.y =  400, 60
-        self.image = load_image('player.png')
+        self.image = load_image('images/player.png')
         self.dir = 1
         self.velocity = 0
         self.event_que = []
@@ -95,10 +95,10 @@ class Plane:
         self.skill_bullet_count = 0
         self.font = load_font('ENCR10B.TTF', 16)
 
-        self.shoot_sound = load_wav('player_shoot_sound.wav')
+        self.shoot_sound = load_wav('sounds/player_shoot_sound.wav')
         self.shoot_sound.set_volume(32)
 
-        self.skill_shoot_sound = load_wav('skill_bullet_sound.wav')
+        self.skill_shoot_sound = load_wav('sounds/skill_bullet_sound.wav')
         self.skill_shoot_sound.set_volume(64)
 
     def shoot(self):
@@ -141,7 +141,6 @@ class Plane:
         self.cur_state.draw(self)
         self.font.draw(620, 20,'[basic bullet: %d]' % self.bullet_count,(100, 255, 0))
         self.font.draw(620, 40, '[Skill bullet: %d]' % self.skill_bullet_count, (100, 255, 0))
-        # draw_rectangle(*self.get_bb())
 
 
 

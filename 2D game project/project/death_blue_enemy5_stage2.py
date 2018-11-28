@@ -29,13 +29,13 @@ class Death_blue_enemy5_stage2:
 
 
     def __init__(self, i):
-        self.image = load_image('dead.png')
+        self.image = load_image('images/dead.png')
         self.x = 500 + 50 * i
         self.y = 450
         self.frame = 0
         self.total_frame = 0.0
         self.dead_enemy = False
-        self.explosion_sound = load_wav('explosion_sound.wav')
+        self.explosion_sound = load_wav('sounds/explosion_sound.wav')
         self.explosion_sound.set_volume(32)
 
     def explosion(self):

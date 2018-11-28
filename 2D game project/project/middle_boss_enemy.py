@@ -21,7 +21,7 @@ class Middle_boss_enemy:
 
     def load_image(self):
         if Middle_boss_enemy.image == None:
-            Middle_boss_enemy.image = load_image('middle_boss_enemy.png')
+            Middle_boss_enemy.image = load_image('images/middle_boss_enemy.png')
 
     def __init__(self, i):
         self.x, self.y = 400+50 * i, 500
@@ -32,7 +32,7 @@ class Middle_boss_enemy:
         self.frame = 0
         self.build_behavior_tree()
         self.count = 0
-        self.bgm = load_wav('enemy_accept_sound.wav')
+        self.bgm = load_wav('sounds/enemy_accept_sound.wav')
         self.bgm.set_volume(32)
 
     def wander(self):
@@ -47,7 +47,6 @@ class Middle_boss_enemy:
 
 
     def find_player(self):
-        # fill here
         plane = stage_state2.get_plane()
         distance = (plane.x - self.x)**2 + (plane.y - self.y) **2
         if distance < (PIXEL_PER_METER * 10)**2:
@@ -68,10 +67,7 @@ class Middle_boss_enemy:
         pass
 
     def build_behavior_tree(self):
-        # fill here
         wander_node = LeafNode("Wander", self.wander)  # wander code
-        # self.bt = BehaviorTree(wander_node)
-
         find_player_node = LeafNode("Find Player", self.find_player)
         move_to_player_node = LeafNode("Move to Player", self.move_to_player)
         chase_node = SequenceNode("Chase")
@@ -86,9 +82,7 @@ class Middle_boss_enemy:
         return self.x - 20, self.y - 20, self.x + 20, self.y + 20
 
     def update(self):
-        # fill here
         self.bt.run()
-
         self.frame = (self.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % FRAMES_PER_ACTION
         self.x += self.speed * math.cos(self.dir) * game_framework.frame_time
         self.y += self.speed * math.sin(self.dir) * game_framework.frame_time
@@ -105,7 +99,6 @@ class Middle_boss_enemy:
     def draw(self):
         self.image.draw(self.x, self.y)
 
-        # draw_rectangle(*self.get_bb())
 
     def handle_event(self, event):
         pass

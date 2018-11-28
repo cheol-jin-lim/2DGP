@@ -6,9 +6,9 @@ import stage_state2
 
 class Background:
     def __init__(self):
-        self.image = load_image('backgroundmap.png')
+        self.image = load_image('images/backgroundmap.png')
         self.font = load_font('ENCR10B.TTF', 40)
-        self.bgm = load_wav('start_intro.wav')
+        self.bgm = load_wav('sounds/start_intro.wav')
         self.bgm.set_volume(64)
         self.bgm.play()
 
@@ -20,6 +20,4 @@ class Background:
 
     def draw(self):
         self.image.draw(400, 300)
-
-        # if stage1_clear_state.logo_time <= 0:
         self.font.draw(400, 540, ' %d ' % main_state.stage1_score, (255, 255, 255))

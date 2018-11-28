@@ -29,7 +29,7 @@ class Green_enemy:
     enemy = None
 
     def __init__(self, i):
-        self.image = load_image('green_enemy_clip.png')
+        self.image = load_image('images/green_enemy_clip.png')
         self.x = 50+50 * i
         self.y = 500
         self.frame = 0
@@ -60,7 +60,7 @@ class Green_enemy:
 
 
 
-        # draw_rectangle(*self.get_bb())
+
 
 
 

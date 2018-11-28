@@ -9,7 +9,7 @@ class Boss_bullet:
 
     def __init__(self, i):
         if Boss_bullet.image == None:
-            Boss_bullet.image = load_image('boss_enemy_bullet.png')
+            Boss_bullet.image = load_image('images/boss_enemy_bullet.png')
         self.x = 50 + 40 * i
         self.y = 500
         self.velocity = random.randint(2, 5)
@@ -27,7 +27,7 @@ class Boss_bullet:
 
     def draw(self):
         self.image.draw(self.x, self.y)
-        # draw_rectangle(*self.get_bb())
+
 
     def update(self):
         self.y -= self.velocity
