@@ -437,7 +437,7 @@ def update():
             game_world.remove_object(test_dead)
             game_world.remove_object(test_dead_boss)
             game_world.remove_object(test_dead_blue_enemy3)
-            game_framework.push_state(stage_2_clear_state)
+            game_framework.change_state(stage_2_clear_state)
             stage2_clear_wait_time = 0
             bullet_list.clear()
             skill_bullet_list.clear()
